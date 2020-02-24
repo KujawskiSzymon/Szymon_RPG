@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Szymon_RPG.Views.CharacterInfo">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="HeroStats">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+
+                    <ViewCell>
+                        <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25*" />
+                                    <ColumnDefinition Width="75*" />
+                                </Grid.ColumnDefinitions>
+                           
+                            <Label Text="{Binding Label}" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="0"/>
+                                <Label TextColor="GreenYellow" Text="{Binding Info}" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Grid.Column="1"/>
+                            </Grid>
+
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+            <Button Text="Rozdaj Punkty Umiejętności" Clicked="GoToSkillPoints" VerticalOptions="Center" HorizontalOptions="Center" />
+        </StackLayout>
+
+        
+    </ContentPage.Content>
+</ContentPage>

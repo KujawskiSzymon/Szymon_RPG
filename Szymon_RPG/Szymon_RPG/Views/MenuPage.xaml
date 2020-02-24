@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Szymon_RPG.Views.MenuPage">
+    <MasterDetailPage.Master>
+
+        <ContentPage BackgroundColor="WhiteSmoke" Title="Menu">
+            <StackLayout Orientation="Vertical">
+
+                <ListView x:Name="navigationDrawerList" ItemSelected="OnMenuItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            
+                                <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="16*" />
+                                        <ColumnDefinition Width="40*" />
+                                        
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding Icon}" HeightRequest="32"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0"/>
+                                    <Label Text="{Binding Title}" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Grid.Column="1" />
+
+                                </Grid>
+                                
+                               
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </StackLayout>
+            
+        </ContentPage>
+           
+        
+                
+        
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

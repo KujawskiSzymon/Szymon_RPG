@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Szymon_RPG.Views.LoginPage">
+    <ContentPage.Content>
+        <StackLayout x:Name="MasterLayout">
+            <StackLayout x:Name="Logo" VerticalOptions="FillAndExpand">
+                <Image x:Name="LoginIcon" Source="LoginIcon.png" Margin="0,80,0,0">
+                    
+                </Image>
+                
+            </StackLayout>
+            <StackLayout x:Name="Login" VerticalOptions="StartAndExpand">
+                <ActivityIndicator x:Name="ActivitySpinner" Color="Red" IsRunning="True"/>
+                <Label Text="Witaj w Szymon RPG" />
+            <Label x:Name="Lbl_Username" Text="Login: "/>
+            <Entry x:Name="Entry_Username" Placeholder="Login"></Entry>
+            <Label x:Name="Lbl_Password" Text="Hasło"/>
+            <Entry x:Name="Entry_Password" Placeholder="Password"/>
+            <Button x:Name="Btn_SignIn" Text="Zaloguj" Clicked="SignInProcedure"></Button>
+            <Button Text="Graj jako gość"></Button>
+        </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
