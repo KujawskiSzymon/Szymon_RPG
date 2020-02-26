@@ -23,6 +23,7 @@ namespace Szymon_RPG.Views
             InitializeComponent();
             var characterInfoPage = new MasterPageItem() { Title = "Postać", Icon="knight.png", TargetType = typeof(CharacterInfo) };
             var travelInfoPage = new MasterPageItem() { Title = "Podróż", Icon = "desert.png", TargetType = typeof(Travel) };
+            var townInfoPage = new MasterPageItem() { Title = "Miasto", Icon = "cityscape.png", TargetType = typeof(Town) };
             var inventoryInfoPage = new MasterPageItem() { Title = "Ekwipunek", Icon = "chest.png",TargetType = typeof(Inventory) };
             var questsInfoPage = new MasterPageItem() { Title = "Zadania", Icon = "question.png", TargetType = typeof(Quests) };
             var arenaInfoPage = new MasterPageItem() { Title = "Arena", Icon = "arena.png", TargetType = typeof(BattleArena)};
@@ -31,6 +32,7 @@ namespace Szymon_RPG.Views
             menuList = new List<MasterPageItem>();
             menuList.Add(characterInfoPage);
             menuList.Add(travelInfoPage);
+            menuList.Add(townInfoPage);
             menuList.Add(inventoryInfoPage);
             menuList.Add(questsInfoPage);
             menuList.Add(arenaInfoPage);

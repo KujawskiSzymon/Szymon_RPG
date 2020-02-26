@@ -3,13 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:viewModels="clr-namespace:Szymon_RPG.ViewModels"
              mc:Ignorable="d"
              x:Class="Szymon_RPG.Views.Travel">
+    <ContentPage.BindingContext>
+        <viewModels:TravelViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
+        
         <StackLayout>
-            <Label Text="Podróż"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Button VerticalOptions="Center"  Command="{Binding ButtonClicked}" HorizontalOptions="Center"  Text="Rozpocznij podróż"/>
+            <Label  Text="{Binding InfoText, Mode=TwoWay}"/>
+            <Image Source="{Binding EnemyImg, Mode=TwoWay}" IsVisible="False"/>
+            <Button IsVisible="False" Text="Walcz"/>
+            <Label TextColor="{Binding RewardColor}" Text="{Binding RewardText, Mode=TwoWay}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
