@@ -127,15 +127,14 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\cityscape.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Enemies\spooky.png" />
+    <AndroidResource Include="Resources\drawable\spooky.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Enemies\supernatural.png" />
+    <AndroidResource Include="Resources\drawable\supernatural.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Enemies\centaur.png" />
+    <AndroidResource Include="Resources\drawable\centaur.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

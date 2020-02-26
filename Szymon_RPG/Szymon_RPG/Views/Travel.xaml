@@ -14,7 +14,7 @@
         <StackLayout>
             <Button VerticalOptions="Center"  Command="{Binding ButtonClicked}" HorizontalOptions="Center"  Text="Rozpocznij podróż"/>
             <Label  Text="{Binding InfoText, Mode=TwoWay}"/>
-            <Image Source="{Binding EnemyImg, Mode=TwoWay}" IsVisible="False"/>
+            <Image HeightRequest="100" WidthRequest="100" Source="{Binding EnemyImg, Mode=TwoWay}" IsVisible="{Binding IsImageEnemy}"/>
             <Button IsVisible="False" Text="Walcz"/>
             <Label TextColor="{Binding RewardColor}" Text="{Binding RewardText, Mode=TwoWay}"/>
         </StackLayout>

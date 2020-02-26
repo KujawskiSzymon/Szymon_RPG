@@ -14,8 +14,8 @@ namespace Szymon_RPG.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         private string infoText="Info";
         private string rewardText="Reward";
-        private string enemyImg;
-        private bool isImageEnemy;
+        private string enemyImg="";
+        private bool isImageEnemy = false;
         private string rewardColor;
 
 
@@ -24,6 +24,7 @@ namespace Szymon_RPG.ViewModels
         {
             ButtonClicked = new Command(execute: () =>
                  {
+                     IsImageEnemy = false;
                      Random random = new Random();
                      int fate = random.Next(1, 1000);
                      switch (fate)
@@ -103,7 +104,7 @@ namespace Szymon_RPG.ViewModels
             }
             set
             {
-                rewardText = value;
+                enemyImg = value;
                 OnPropertyChanged("EnemyImg");
             }
         }
