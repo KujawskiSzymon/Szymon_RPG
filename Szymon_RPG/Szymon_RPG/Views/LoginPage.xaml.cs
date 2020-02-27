@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Szymon_RPG.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
+
 
 namespace Szymon_RPG.Views
 {
@@ -29,7 +32,7 @@ namespace Szymon_RPG.Views
 
             Entry_Username.Completed +=(sender,e) => Entry_Password.Focus();
             Entry_Password.Completed += (sender, e) => SignInProcedure(sender,e);
-
+            Constants.towns = new ObservableCollection<TownModel>();
             Constants.Hero = new Models.Character() { name = "Szymon", atk = 10, def = 10, agi = 10, hp = 150, luck = 10, lvl = 1, matk = 10, mdef = 10, mp = 16 };
             Constants.levelRate.Add(1, 50);
             Constants.levelRate.Add(2, 75);
@@ -82,6 +85,17 @@ namespace Szymon_RPG.Views
             Constants.levelRate.Add(49, 50);
             Constants.levelRate.Add(50, 50);
             */
+
+            ConsumableItem item1 = new ConsumableItem() { name = "Mikstura Życia", hpRestore = 500, price = 50, image="elixir.png" };
+            ObservableCollection<Models.Item> items = new ObservableCollection<Item>();
+            items.Add(item1);
+           
+
+            Quest firstQuest = new Quest() { active = false, exp = 30, done = 0, desc = "Tutaj znajduje się opis pierwszego questa", gold = 50, itemReward = null, name = "Pierwszy Quest", reqDone = 3, reward = "Tutaj znajduje się opis nagrody" };
+            ObservableCollection<Quest> firstTown = new ObservableCollection<Quest>();
+            firstTown.Add(firstQuest);
+            TownModel town = new TownModel() { Name = "Deling", Quests = firstTown, Shop = items, isUnlocked = true};
+            Constants.towns.Add(town);
                     }
 
 

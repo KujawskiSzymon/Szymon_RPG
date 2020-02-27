@@ -2,7 +2,7 @@
 using Szymon_RPG.Data;
 using Szymon_RPG.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+
 
 namespace Szymon_RPG
 {

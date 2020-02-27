@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Text;
+
 using System.Windows.Input;
 using Szymon_RPG.Models;
 using Xamarin.Forms;
@@ -17,6 +17,8 @@ namespace Szymon_RPG.ViewModels
         private string enemyImg="";
         private bool isImageEnemy = false;
         private string rewardColor;
+
+        public int townCount;
 
 
         public ICommand ButtonClicked { get; set; }

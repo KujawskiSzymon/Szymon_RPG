@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Text;
 
 namespace Szymon_RPG.Models
 {
-    public class Constants
+    public static class Constants
     {
         public static bool isDev = true;
 
@@ -25,6 +26,15 @@ namespace Szymon_RPG.Models
 
         public static Dictionary<int, int> levelRate = new Dictionary<int, int>();
         public static int maxLvl = 25;
+
+        // Miasto
+
+        public static ObservableCollection<TownModel> towns;
+        public static int actualTown = 0;
+        
+
+        
+        
         
 
     }
