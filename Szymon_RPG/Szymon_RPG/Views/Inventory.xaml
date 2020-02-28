@@ -4,12 +4,41 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+              xmlns:viewModels="clr-namespace:Szymon_RPG.ViewModels"
              x:Class="Szymon_RPG.Views.Inventory">
+    <ContentPage.BindingContext>
+        <viewModels:InventoryViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Tu kiedyś będzie ekwipunek..."
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Brak Przedmiotów..." IsVisible="{Binding MsgAnyItems}"/>
+            <ListView IsVisible="{Binding AnyItems}" ItemsSource="{Binding Items}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="1*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Image HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding image}" Grid.Column="0"/>
+                                        <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding name}" Grid.Column="1"/>
+
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell.View>
+
+
+                        </ViewCell>
+
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
