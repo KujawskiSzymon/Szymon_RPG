@@ -19,7 +19,7 @@ namespace Szymon_RPG.Models
         public int agi { get; set; }
         public  int skillPoints { get; set; } = 0;
         public static bool canExp = true;
-
+        public Inventory inventory { get; set; }
         
 
         public int maxHP { get; set; }

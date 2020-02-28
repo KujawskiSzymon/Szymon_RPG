@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Text;
+using System.Windows.Input;
 using Szymon_RPG.Models;
+using Xamarin.Forms;
 
 namespace Szymon_RPG.ViewModels
 {
@@ -12,7 +15,7 @@ namespace Szymon_RPG.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
        private ObservableCollection<Item> items;
-
+        public ICommand ButtonClicked { get; set; }
 
         public ObservableCollection<Item> Items
         {
@@ -29,6 +32,10 @@ namespace Szymon_RPG.ViewModels
 
         public ShopViewModel()
         {
+            ButtonClicked = new Command(execute: () =>
+            {
+                buyItem();
+            });
             items = new ObservableCollection<Item>();
             Items = Constants.towns[Constants.actualTown].Shop;
         }
@@ -41,6 +48,12 @@ namespace Szymon_RPG.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+         private void buyItem()
+        {
+            Debug.WriteLine("Test");
+        }
+
 
     }
 

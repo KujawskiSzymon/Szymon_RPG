@@ -8,7 +8,8 @@
              x:Class="Szymon_RPG.Views.Shop">
 
     <ContentPage.BindingContext>
-        <viewModels:ShopViewModel/>
+        
+        <viewModels:ShopViewModel x:Name="Home"/>
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
@@ -30,7 +31,7 @@
                                         <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding name}" Grid.Column="1"/>
                                         
                                         <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding price}" Grid.Column="2"/>
-                                        <ImageButton HorizontalOptions="Center" VerticalOptions="Center" Source="gold.png" Grid.Column="3"/>
+                                        <ImageButton HorizontalOptions="Center"   VerticalOptions="Center" Source="gold.png" Grid.Column="3"/>
                                     </Grid>
                                 </StackLayout>
                             </ViewCell.View>
