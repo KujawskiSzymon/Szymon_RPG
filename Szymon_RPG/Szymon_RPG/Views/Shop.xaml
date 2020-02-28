@@ -19,8 +19,19 @@
                         <ViewCell>
                             <ViewCell.View>
                                 <StackLayout>
-                                    <Label Text="{Binding name}"/>
-                                    <Label Text="{Binding price}"/>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="1*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Image HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding image}" Grid.Column="0"/>
+                                        <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding name}" Grid.Column="1"/>
+                                        
+                                        <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding price}" Grid.Column="2"/>
+                                        <ImageButton HorizontalOptions="Center" VerticalOptions="Center" Source="gold.png" Grid.Column="3"/>
+                                    </Grid>
                                 </StackLayout>
                             </ViewCell.View>
                               
