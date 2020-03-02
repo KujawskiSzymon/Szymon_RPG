@@ -10,7 +10,22 @@ namespace Szymon_RPG.ViewModels
    public class InventoryViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        private bool isConsumable;
         private bool anyItems;
+
+        public Boolean IsConsumable
+        {
+            get
+            {
+                return isConsumable;
+            }
+            set
+            {
+                anyItems = value;
+                OnPropertyChanged("IsConsumable");
+            }
+        }
+
         public Boolean AnyItems
         {
             get

@@ -26,13 +26,13 @@ namespace Szymon_RPG.Views.CharacterMenu
             InitializeComponent();
             menuStats = new List<SkillStatInfo>();
             RemainingSkillPoints = "Punkty Umiejętności: "+Constants.Hero.skillPoints.ToString();
-            menuStats.Add(new SkillStatInfo { Label = "Żywotność", Stat = Constants.Hero.hp });
-            menuStats.Add(new SkillStatInfo { Label = "Siła", Stat = Constants.Hero.atk });
-            menuStats.Add(new SkillStatInfo { Label = "Magia", Stat = Constants.Hero.matk });
-            menuStats.Add(new SkillStatInfo { Label = "Obrona", Stat = Constants.Hero.def });
-            menuStats.Add(new SkillStatInfo { Label = "Obrona Magiczna", Stat = Constants.Hero.mdef });
-            menuStats.Add(new SkillStatInfo { Label = "Szybkość", Stat = Constants.Hero.agi });
-            menuStats.Add(new SkillStatInfo { Label = "Szczęście", Stat = Constants.Hero.luck });
+            menuStats.Add(new SkillStatInfo { Label = "Żywotność", Stat =  Constants.Hero.live});
+            menuStats.Add(new SkillStatInfo { Label = "Siła", Stat = Constants.Hero.str });
+            menuStats.Add(new SkillStatInfo { Label = "Magia", Stat = Constants.Hero.mag });
+            menuStats.Add(new SkillStatInfo { Label = "Obrona", Stat = Constants.Hero.vit });
+            menuStats.Add(new SkillStatInfo { Label = "Obrona Magiczna", Stat = Constants.Hero.spr});
+            menuStats.Add(new SkillStatInfo { Label = "Szybkość", Stat = Constants.Hero.speed });
+            menuStats.Add(new SkillStatInfo { Label = "Szczęście", Stat = Constants.Hero.luckRaw });
             MenuStats.ItemsSource = menuStats;
             SkillPoints.Text = RemainingSkillPoints;
 
@@ -59,34 +59,34 @@ namespace Szymon_RPG.Views.CharacterMenu
                 SkillStatInfo x = (SkillStatInfo)button.BindingContext;
                 if (x.Label.Equals("Żywotność"))
                 {
-                    Constants.Hero.hp+=10; x.Stat += 10;
+                    Constants.Hero.live+=10; x.Stat += 1;
                 }
                 if (x.Label.Equals("Siła"))
                 {
-                    Constants.Hero.atk++; x.Stat += 1;
+                    Constants.Hero.str++; x.Stat += 1;
                 }
                 if (x.Label.Equals("Magia"))
                 {
-                    Constants.Hero.matk++; x.Stat += 1;
+                    Constants.Hero.mag++; x.Stat += 1;
                 }
 
                 if (x.Label.Equals("Obrona"))
                 {
-                    Constants.Hero.def++; x.Stat += 1;
+                    Constants.Hero.vit++; x.Stat += 1;
                 }
 
                 if (x.Label.Equals("Obrona Magiczna"))
                 {
-                    Constants.Hero.mdef++; x.Stat += 1;
+                    Constants.Hero.spr++; x.Stat += 1;
                 }
 
                 if (x.Label.Equals("Szybkość"))
                 {
-                    Constants.Hero.agi++; x.Stat += 1;
+                    Constants.Hero.speed++; x.Stat += 1;
                 }
                 if (x.Label.Equals("Szczęście"))
                 {
-                    Constants.Hero.luck++;
+                    Constants.Hero.luckRaw++;
                     x.Stat += 1;
                 }
 

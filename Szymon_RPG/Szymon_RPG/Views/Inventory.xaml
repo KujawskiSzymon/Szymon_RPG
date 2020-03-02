@@ -27,6 +27,8 @@
                                         </Grid.ColumnDefinitions>
                                         <Image HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding image}" Grid.Column="0"/>
                                         <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding name}" Grid.Column="1"/>
+                                        <Button Text="Użyj" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding isConsuamble}" Grid.Column="2"/>
+                                        <Button Text="Załóż" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding isEquable}" Grid.Column="2"/>
 
                                     </Grid>
                                 </StackLayout>

@@ -30,10 +30,10 @@ namespace Szymon_RPG.Views
             ActivitySpinner.IsVisible = false;
             LoginIcon.HeightRequest = Constants.LoginIconHeight;
 
-            Entry_Username.Completed +=(sender,e) => Entry_Password.Focus();
-            Entry_Password.Completed += (sender, e) => SignInProcedure(sender,e);
+            Entry_Username.Completed += (sender, e) => Entry_Password.Focus();
+            Entry_Password.Completed += (sender, e) => SignInProcedure(sender, e);
             Constants.towns = new ObservableCollection<TownModel>();
-            Constants.Hero = new Models.Character() { inventory = new Models.Inventory(),name = "Szymon", atk = 10, def = 10, agi = 10, hp = 150, luck = 10, lvl = 1, matk = 10, mdef = 10, mp = 16 };
+            Constants.Hero = new Models.Character() { inventory = new Models.Inventory(), name = "Szymon" };
             Constants.levelRate.Add(1, 50);
             Constants.levelRate.Add(2, 75);
             Constants.levelRate.Add(3, 125);
@@ -86,8 +86,8 @@ namespace Szymon_RPG.Views
             Constants.levelRate.Add(50, 50);
             */
             //Przedmioty Startowe dopóki nie ma dwóch miast jest to na sztywno
-            ConsumableItem item1 = new ConsumableItem() { name = "Mikstura Życia", hpRestore = 500, price = 50, image="elixir.png" };
-            OneHandItem oneHand1 = new OneHandItem() { atk = 3, name="Sztylet", price= 200, image= "dagger.png" };
+            ConsumableItem item1 = new ConsumableItem() { name = "Mikstura Życia", hpRestore = 500, price = 50, image = "elixir.png", isConsuamble=true };
+            OneHandItem oneHand1 = new OneHandItem() { atk = 3, name = "Sztylet", price = 200, image = "dagger.png", isEquable = true };
             ObservableCollection<Models.Item> items = new ObservableCollection<Item>();
             items.Add(item1);
             items.Add(oneHand1);
@@ -100,8 +100,9 @@ namespace Szymon_RPG.Views
             Constants.Hero.inventory.items = new List<Item>();
             Constants.allItems = new Dictionary<string, Item>();
             Constants.allItems.Add(item1.name, item1);
-            
-                    }
+            Constants.allItems.Add(oneHand1.name, oneHand1);
+
+        }
 
 
 

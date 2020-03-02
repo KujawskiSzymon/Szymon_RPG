@@ -53,20 +53,23 @@ namespace Szymon_RPG.ViewModels
         {
             ImageButton  button = (ImageButton)sender;
            Item x =  (Item)button.BindingContext;
+            /*
             if (Constants.gold > x.price)
             {
                 Constants.gold -= x.price;
+                */
                 Item item;
                 if (Constants.allItems.TryGetValue(x.name, out item))
                 {
                     Constants.Hero.inventory.items.Add(item);
                 }
                 await Application.Current.MainPage.DisplayAlert("Sklep", "Zakup Udany", "OK").ConfigureAwait(true);
-            }
+            /* }
             else
             {
                 await Application.Current.MainPage.DisplayAlert("Sklep", "Brak funduszy", "OK").ConfigureAwait(true);
             }
+            */
             
 
 

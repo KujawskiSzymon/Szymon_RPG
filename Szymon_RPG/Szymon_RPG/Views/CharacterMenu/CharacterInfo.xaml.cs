@@ -34,6 +34,7 @@ namespace Szymon_RPG.Views
         }
       protected override void OnAppearing()
         {
+            Constants.Hero.updateStats();
             menuStats = new List<StatInfo>();
             StatInfo name = new StatInfo() { Label = "Nazwa Gracza", Info = Constants.Hero.name };
             StatInfo hp = new StatInfo() { Label = "HP", Info = Constants.Hero.hp.ToString() };

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace Szymon_RPG.Models
@@ -9,6 +10,9 @@ namespace Szymon_RPG.Models
         public string image { get; set; }
         public string name { get; set; }
         public int price { get; set; }
-        public enum typeItem{ CONSUMABLE,ONEHAND,SHIELD,HELMET,BODY,RING,TWOHAND};
+
+        public bool isConsuamble { get; set; } = false;
+        public bool isEquable { get; set; } = false;
+
     }
 }
