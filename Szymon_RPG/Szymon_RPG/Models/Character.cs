@@ -42,9 +42,9 @@ namespace Szymon_RPG.Models
         {
 
 
-            hp = Convert.ToInt32(live * 10 * 1.2);
-            mp  = Convert.ToInt32(mpRaw * 2.43 * 1.2);
-           atk  = Convert.ToInt32(str * 1.2);
+            hp = Convert.ToInt32(live * 7 * 1.2) ;
+            mp  = Convert.ToInt32(mpRaw * 2.2 * 1.2);
+           atk  = Convert.ToInt32(str * 1.2) + (Constants.Hero.inventory.oneHand == null ? 0 : Constants.Hero.inventory.oneHand.atk);
          def = Convert.ToInt32(vit * 1.2);
         matk  = Convert.ToInt32(mag * 1.2);
         mdef = Convert.ToInt32(spr * 1.2);

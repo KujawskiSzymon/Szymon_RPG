@@ -60,34 +60,11 @@ namespace Szymon_RPG.Views
             Constants.levelRate.Add(24, 67000);
             Constants.levelRate.Add(25, 83500);
             /*Constants.levelRate.Add(26, 50);
-            Constants.levelRate.Add(27, 50);
-            Constants.levelRate.Add(28, 50);
-            Constants.levelRate.Add(29, 50);
-            Constants.levelRate.Add(30, 50);
-            Constants.levelRate.Add(31, 50);
-            Constants.levelRate.Add(32, 50);
-            Constants.levelRate.Add(33, 50);
-            Constants.levelRate.Add(34, 50);
-            Constants.levelRate.Add(35, 50);
-            Constants.levelRate.Add(36, 50);
-            Constants.levelRate.Add(37, 50);
-            Constants.levelRate.Add(38, 50);
-            Constants.levelRate.Add(39, 50);
-            Constants.levelRate.Add(40, 50);
-            Constants.levelRate.Add(41, 50);
-            Constants.levelRate.Add(42, 50);
-            Constants.levelRate.Add(43, 50);
-            Constants.levelRate.Add(44, 50);
-            Constants.levelRate.Add(45, 50);
-            Constants.levelRate.Add(46, 50);
-            Constants.levelRate.Add(47, 50);
-            Constants.levelRate.Add(48, 50);
-            Constants.levelRate.Add(49, 50);
-            Constants.levelRate.Add(50, 50);
+          
             */
             //Przedmioty Startowe dopóki nie ma dwóch miast jest to na sztywno
-            ConsumableItem item1 = new ConsumableItem() { name = "Mikstura Życia", hpRestore = 500, price = 50, image = "elixir.png", isConsuamble=true };
-            OneHandItem oneHand1 = new OneHandItem() { atk = 3, name = "Sztylet", price = 200, image = "dagger.png", isEquable = true };
+            ConsumableItem item1 = new ConsumableItem() { name = "Mikstura Życia", type=0, hpRestore = 500, price = 50, image = "elixir.png", isConsuamble=true };
+            OneHandItem oneHand1 = new OneHandItem() { atk = 3, type=1, name = "Sztylet", price = 200, image = "dagger.png", isEquable = true };
             ObservableCollection<Models.Item> items = new ObservableCollection<Item>();
             items.Add(item1);
             items.Add(oneHand1);

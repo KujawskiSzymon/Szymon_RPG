@@ -7,5 +7,7 @@ namespace Szymon_RPG.Models
    public  class Inventory
     {
         public  List<Item> items;
+        public OneHandItem oneHand;
+        
     }
 }

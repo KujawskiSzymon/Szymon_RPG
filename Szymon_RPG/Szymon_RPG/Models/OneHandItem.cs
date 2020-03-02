@@ -4,15 +4,15 @@ using System.Text;
 
 namespace Szymon_RPG.Models
 {
-    class OneHandItem : Item
+   public class OneHandItem : Item
     {
-        public int hp { get; set; }
-        public int mp { get; set; }
-        public int atk { get; set; }
-        public int def { get; set; }
-        public int matk { get; set; }
-        public int mdef { get; set; }
-        public int luck { get; set; }
-        public int agi { get; set; }
+        public int hp { get; set; } = 0;
+        public int mp { get; set; } = 0;
+        public int atk { get; set; } = 0;
+        public int def { get; set; } = 0;
+        public int matk { get; set; } = 0;
+        public int mdef { get; set; } = 0;
+        public int luck { get; set; } = 0;
+        public int agi { get; set; } = 0;
     }
 }

@@ -7,7 +7,7 @@
               xmlns:viewModels="clr-namespace:Szymon_RPG.ViewModels"
              x:Class="Szymon_RPG.Views.Inventory">
     <ContentPage.BindingContext>
-        <viewModels:InventoryViewModel/>
+        <viewModels:InventoryViewModel x:Name="Home"/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
@@ -27,9 +27,9 @@
                                         </Grid.ColumnDefinitions>
                                         <Image HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding image}" Grid.Column="0"/>
                                         <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding name}" Grid.Column="1"/>
-                                        <Button Text="Użyj" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding isConsuamble}" Grid.Column="2"/>
-                                        <Button Text="Załóż" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding isEquable}" Grid.Column="2"/>
-
+                                        <Button x:Name="useButton" Command="{Binding useItem,Source={x:Reference Name=Home}}" CommandParameter="{Binding Source={x:Reference useButton}}"   Text="Użyj" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding isConsuamble}" Grid.Column="2"/>
+                                        <Button x:Name="eqButton" Command="{Binding equipItem,Source={x:Reference Name=Home}}" CommandParameter="{Binding Source={x:Reference eqButton}}" Text="Załóż" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding isEquable}" Grid.Column="2"/>
+                                        <Button x:Name="uneqButton" Command="{Binding unequipItem,Source={x:Reference Name=Home}}" CommandParameter="{Binding Source={x:Reference uneqButton}}" Text="Zdejmij" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding isEquipped}" Grid.Column="2"/>
                                     </Grid>
                                 </StackLayout>
                             </ViewCell.View>
