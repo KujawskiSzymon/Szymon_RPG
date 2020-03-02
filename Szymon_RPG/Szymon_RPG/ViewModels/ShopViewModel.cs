@@ -61,7 +61,15 @@ namespace Szymon_RPG.ViewModels
                 Item item;
                 if (Constants.allItems.TryGetValue(x.name, out item))
                 {
+                if (Constants.Hero.inventory.items.Contains(item))
+                {
+                    item.Quantity += 1;
+                }
+                else
+                {
                     Constants.Hero.inventory.items.Add(item);
+                    item.Quantity += 1;
+                }
                 }
                 await Application.Current.MainPage.DisplayAlert("Sklep", "Zakup Udany", "OK").ConfigureAwait(true);
             /* }

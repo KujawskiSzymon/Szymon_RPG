@@ -27,9 +27,10 @@
                                         </Grid.ColumnDefinitions>
                                         <Image HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding image}" Grid.Column="0"/>
                                         <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding name}" Grid.Column="1"/>
-                                        <Button x:Name="useButton" Command="{Binding useItem,Source={x:Reference Name=Home}}" CommandParameter="{Binding Source={x:Reference useButton}}"   Text="Użyj" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding isConsuamble}" Grid.Column="2"/>
-                                        <Button x:Name="eqButton" Command="{Binding equipItem,Source={x:Reference Name=Home}}" CommandParameter="{Binding Source={x:Reference eqButton}}" Text="Załóż" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding isEquable}" Grid.Column="2"/>
-                                        <Button x:Name="uneqButton" Command="{Binding unequipItem,Source={x:Reference Name=Home}}" CommandParameter="{Binding Source={x:Reference uneqButton}}" Text="Zdejmij" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding isEquipped}" Grid.Column="2"/>
+                                        <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Quantity}" Grid.Column="2"/>
+                                        <Button x:Name="useButton" Command="{Binding useItem,Source={x:Reference Name=Home}}" CommandParameter="{Binding Source={x:Reference useButton}}"   Text="Użyj" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding isConsuamble}" Grid.Column="3"/>
+                                        <Button x:Name="eqButton" Command="{Binding equipItem,Source={x:Reference Name=Home}}" CommandParameter="{Binding Source={x:Reference eqButton}}" Text="Załóż" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding isEquable}" Grid.Column="3"/>
+                                        <Button x:Name="uneqButton" Command="{Binding unequipItem,Source={x:Reference Name=Home}}" CommandParameter="{Binding Source={x:Reference uneqButton}}" Text="Zdejmij" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsEquipped}" Grid.Column="3"/>
                                     </Grid>
                                 </StackLayout>
                             </ViewCell.View>

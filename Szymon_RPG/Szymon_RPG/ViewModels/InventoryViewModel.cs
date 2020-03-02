@@ -34,7 +34,7 @@ namespace Szymon_RPG.ViewModels
 
             useItem = new Command(execute: (sender) =>
             {
-               // buyItem(sender);
+                use(sender);
             });
             equipItem = new Command(execute: (sender) =>
             {
@@ -111,8 +111,8 @@ namespace Szymon_RPG.ViewModels
 
         async private void use(object sender)
         {
-            ImageButton button = (ImageButton)sender;
-            Item x = (Item)button.BindingContext;
+            Button button = (Button)sender;
+            ConsumableItem x = (ConsumableItem)button.BindingContext;
             /*
             if (Constants.gold > x.price)
             {
@@ -121,9 +121,19 @@ namespace Szymon_RPG.ViewModels
             Item item;
             if (Constants.allItems.TryGetValue(x.name, out item))
             {
-                Constants.Hero.inventory.items.Add(item);
+                ConsumableItem theItem = (ConsumableItem)item;
+                theItem.Quantity -= 1;
+                if (theItem.Quantity == 0)
+                {
+                    Constants.Hero.inventory.items.Remove(theItem);
+                    if (Constants.Hero.inventory.items.Count == 0)
+                    {
+                        AnyItems = false;
+                        MsgAnyItems = true;
+                    }
+                }
             }
-            await Application.Current.MainPage.DisplayAlert("Ekwipunek", "Założono EkwipunekUdany", "OK").ConfigureAwait(true);
+            await Application.Current.MainPage.DisplayAlert("Ekwipunek", "Zużyto przedmiot", "OK").ConfigureAwait(true);
             /* }
             else
             {
@@ -137,7 +147,7 @@ namespace Szymon_RPG.ViewModels
         }
         async private void equip(object sender)
         {
-            Button button = (Button)sender;
+             Button button = (Button)sender;
             Item x = (Item)button.BindingContext;
            
             Item item;
