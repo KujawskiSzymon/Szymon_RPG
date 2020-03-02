@@ -17,5 +17,7 @@ namespace Szymon_RPG.Views
             InitializeComponent();
             
         }
+
+
     }
 }

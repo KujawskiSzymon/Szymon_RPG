@@ -97,7 +97,13 @@ namespace Szymon_RPG.Views
             firstTown.Add(firstQuest);
             TownModel town = new TownModel() { Name = "Deling", Quests = firstTown, Shop = items, isUnlocked = true};
             Constants.towns.Add(town);
+            Constants.Hero.inventory.items = new List<Item>();
+            Constants.allItems = new Dictionary<string, Item>();
+            Constants.allItems.Add(item1.name, item1);
+            
                     }
+
+
 
 
 

@@ -27,13 +27,17 @@ namespace Szymon_RPG.Models
         public static Dictionary<int, int> levelRate = new Dictionary<int, int>();
         public static int maxLvl = 25;
 
+        public static int gold = 0;
+
         // Miasto
 
         public static ObservableCollection<TownModel> towns;
         public static int actualTown = 0;
-        
 
-        
+
+        // Wszystkie Przedmioty??
+
+        public static Dictionary<string, Item> allItems;
         
         
 

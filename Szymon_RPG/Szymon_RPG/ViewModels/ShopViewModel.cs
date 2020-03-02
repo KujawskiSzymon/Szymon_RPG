@@ -32,9 +32,9 @@ namespace Szymon_RPG.ViewModels
 
         public ShopViewModel()
         {
-            ButtonClicked = new Command(execute: () =>
+            ButtonClicked = new Command(execute: (sender) =>
             {
-                buyItem();
+                buyItem(sender);
             });
             items = new ObservableCollection<Item>();
             Items = Constants.towns[Constants.actualTown].Shop;
@@ -49,9 +49,28 @@ namespace Szymon_RPG.ViewModels
             }
         }
 
-         private void buyItem()
+      async  private void buyItem(object sender)
         {
-            Debug.WriteLine("Test");
+            ImageButton  button = (ImageButton)sender;
+           Item x =  (Item)button.BindingContext;
+            if (Constants.gold > x.price)
+            {
+                Constants.gold -= x.price;
+                Item item;
+                if (Constants.allItems.TryGetValue(x.name, out item))
+                {
+                    Constants.Hero.inventory.items.Add(item);
+                }
+                await Application.Current.MainPage.DisplayAlert("Sklep", "Zakup Udany", "OK").ConfigureAwait(true);
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Sklep", "Brak funduszy", "OK").ConfigureAwait(true);
+            }
+            
+
+
+
         }
 
 
