@@ -65,9 +65,22 @@ namespace Szymon_RPG.Views
             //Przedmioty Startowe dopóki nie ma dwóch miast jest to na sztywno
             ConsumableItem item1 = new ConsumableItem() { name = "Mikstura Życia", type=0, hpRestore = 500, price = 50, image = "elixir.png", isConsuamble=true };
             OneHandItem oneHand1 = new OneHandItem() { atk = 3, type=1, name = "Sztylet",  price = 200, image = "dagger.png", IsEquable = true };
+            ShieldItem ShieldItem1 = new ShieldItem() { def = 3, type=2, name = "Prosta Tarcza",  price = 200, image = "shield.png", IsEquable = true };
+            HelmetItem helmet1 = new HelmetItem() { mdef=2, type=3, name = "Prosty Hełm",  price = 200, image = "viking.png", IsEquable = true };
+            BodyItem body1 = new BodyItem() { def = 3, mdef=1, type=4, name = "Łachmany",  price = 500, image = "armor.png", IsEquable = true };
+            BootItem boot1 = new BootItem() { luck = 3, type=5, name = "Buty",  price = 200, image = "boots.png", IsEquable = true };
+            RingItem ring1 = new RingItem() { hp = 30, type=6, name = "Pierscień Życia",  price = 200, image = "shenRing.png", IsEquable = true };
+          //  TwoHandItem twohand = new TwoHandItem() { atk = 3, type=7, name = "Sztylet",  price = 200, image = "swords.png", IsEquable = true };
+            
             ObservableCollection<Models.Item> items = new ObservableCollection<Item>();
             items.Add(item1);
             items.Add(oneHand1);
+            items.Add(ShieldItem1);
+            items.Add(helmet1);
+            items.Add(body1);
+            items.Add(boot1);
+            items.Add(ring1);
+            //Twohand!
 
             Quest firstQuest = new Quest() { active = false, exp = 30, done = 0, desc = "Tutaj znajduje się opis pierwszego questa", gold = 50, itemReward = null, name = "Pierwszy Quest", reqDone = 3, reward = "Tutaj znajduje się opis nagrody" };
             ObservableCollection<Quest> firstTown = new ObservableCollection<Quest>();
@@ -78,6 +91,11 @@ namespace Szymon_RPG.Views
             Constants.allItems = new Dictionary<string, Item>();
             Constants.allItems.Add(item1.name, item1);
             Constants.allItems.Add(oneHand1.name, oneHand1);
+            Constants.allItems.Add(ShieldItem1.name, ShieldItem1);
+            Constants.allItems.Add(helmet1.name, helmet1);
+            Constants.allItems.Add(body1.name, body1);
+            Constants.allItems.Add(boot1.name, boot1);
+            Constants.allItems.Add(ring1.name, ring1);
 
         }
 

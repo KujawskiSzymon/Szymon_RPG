@@ -9,6 +9,12 @@ namespace Szymon_RPG.Models
     {
         public ObservableCollection<Item> items;
         public OneHandItem oneHand;
+        public TwoHandItem twoHand;
+        public ShieldItem shield;
+        public HelmetItem helmet;
+        public BodyItem body;
+        public BootItem boots;
+        public RingItem ring;
         
     }
 }

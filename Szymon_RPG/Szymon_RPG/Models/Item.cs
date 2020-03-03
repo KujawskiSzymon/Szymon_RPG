@@ -53,7 +53,7 @@ namespace Szymon_RPG.Models
        
 
 
-        public enum itemType { CONSUMABLE, ONEHAND, TWOHAND, HELMET, ARMOR, BOOTS, RING, SHIELD };
+        public enum itemType { CONSUMABLE, ONEHAND, SHIELD, HELMET, ARMOR, BOOTS, RING, TWOHAND };
 
         protected virtual void OnPropertyChanged(string propertyName)
         {

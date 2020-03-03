@@ -162,26 +162,33 @@ namespace Szymon_RPG.ViewModels
                     {
                         case 1:
                             Constants.Hero.inventory.oneHand = (OneHandItem)item;
-
-
-                            //
-                            item.ButtonText = "Zdejmij";
                             break;
                         case 2:
+                            Constants.Hero.inventory.shield = (ShieldItem)item;
                             break;
                         case 3:
+                            Constants.Hero.inventory.helmet = (HelmetItem)item;
                             break;
+                           
                         case 4:
+                            Constants.Hero.inventory.body = (BodyItem)item;
                             break;
+                         
                         case 5:
+                            Constants.Hero.inventory.boots = (BootItem)item;
                             break;
+                 
                         case 6:
+                            Constants.Hero.inventory.ring = (RingItem)item;
                             break;
+                          
                         case 7:
+                       //     Constants.Hero.inventory.twoHand = (OneHandItem)item;
                             break;
 
                     }
                     // Constants.Hero.inventory.oneHand = item;
+                    item.ButtonText = "Zdejmij";
                 }
                 await Application.Current.MainPage.DisplayAlert("Ekwipunek", "Ekwipunek założony", "OK").ConfigureAwait(true);
                 /* }
@@ -204,27 +211,29 @@ namespace Szymon_RPG.ViewModels
                     {
                         case 1:
                             Constants.Hero.inventory.oneHand = null;
-                           
-                            ;
-                            //
-                            item.ButtonText = "Załóż";
-
                             break;
                         case 2:
+                            Constants.Hero.inventory.shield = null;
                             break;
                         case 3:
+                            Constants.Hero.inventory.helmet = null;
                             break;
                         case 4:
+                            Constants.Hero.inventory.body = null;
                             break;
                         case 5:
+                            Constants.Hero.inventory.boots = null;
                             break;
                         case 6:
+                            Constants.Hero.inventory.ring = null;
                             break;
                         case 7:
+                            Constants.Hero.inventory.twoHand = null;
                             break;
 
                     }
                     // Constants.Hero.inventory.oneHand = item;
+                    item.ButtonText = "Załóż";
                 }
                 await Application.Current.MainPage.DisplayAlert("Ekwipunek", "Ekwipunek zdjęty", "OK").ConfigureAwait(true);
 

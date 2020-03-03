@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Szymon_RPG.Models
 {
-    public class BodyItem : Item
+   public class BootItem : Item
     {
         public int hp { get; set; } = 0;
         public int mp { get; set; } = 0;
