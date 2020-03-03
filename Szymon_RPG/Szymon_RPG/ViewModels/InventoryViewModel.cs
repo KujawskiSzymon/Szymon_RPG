@@ -40,11 +40,10 @@ namespace Szymon_RPG.ViewModels
             {
                  equip(sender);
             });
-           unequipItem = new Command(execute: (sender) =>
-            {
-                unequip(sender);
-            });
+         
         }
+
+        
 
         public Boolean IsConsumable
         {
@@ -86,8 +85,8 @@ namespace Szymon_RPG.ViewModels
             }
         }
 
-        private List<Item> items;
-        public List<Item> Items
+        private ObservableCollection<Item> items;
+        public ObservableCollection<Item> Items
         {
             get
             {
@@ -126,12 +125,15 @@ namespace Szymon_RPG.ViewModels
                 if (theItem.Quantity == 0)
                 {
                     Constants.Hero.inventory.items.Remove(theItem);
+                    Items.Remove(theItem);
                     if (Constants.Hero.inventory.items.Count == 0)
                     {
                         AnyItems = false;
                         MsgAnyItems = true;
                     }
+                    
                 }
+                
             }
             await Application.Current.MainPage.DisplayAlert("Ekwipunek", "Zużyto przedmiot", "OK").ConfigureAwait(true);
             /* }
@@ -147,79 +149,91 @@ namespace Szymon_RPG.ViewModels
         }
         async private void equip(object sender)
         {
-             Button button = (Button)sender;
-            Item x = (Item)button.BindingContext;
-           
-            Item item;
-            if (Constants.allItems.TryGetValue(x.name, out item))
-            {
-                switch (item.type)
-                {
-                    case 1:
-                        Constants.Hero.inventory.oneHand = (OneHandItem)item;
-                        Constants.allItems[item.name].isEquable = false;
-                        Constants.allItems[item.name].isEquipped = true;
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-                    case 6:
-                        break;
-                    case 7:
-                        break;
-
-                }
-               // Constants.Hero.inventory.oneHand = item;
-            }
-            await Application.Current.MainPage.DisplayAlert("Ekwipunek", "Ekwipunek założony", "OK").ConfigureAwait(true);
-            /* }
-            else
-            {
-                await Application.Current.MainPage.DisplayAlert("Sklep", "Brak funduszy", "OK").ConfigureAwait(true);
-            }
-            */
-
-
-
-
-        }
-        async private void unequip(object sender)
-        {
             Button button = (Button)sender;
             Item x = (Item)button.BindingContext;
 
             Item item;
-            if (Constants.allItems.TryGetValue(x.name, out item))
+            if (button.Text.Equals("Załóż"))
             {
-                switch (item.type)
+              
+                if (Constants.allItems.TryGetValue(x.name, out item))
                 {
-                    case 1:
-                        Constants.Hero.inventory.oneHand =null;
-                        Constants.allItems[item.name].isEquable = true;
-                        Constants.allItems[item.name].isEquipped = false;
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-                    case 6:
-                        break;
-                    case 7:
-                        break;
+                    switch (item.type)
+                    {
+                        case 1:
+                            Constants.Hero.inventory.oneHand = (OneHandItem)item;
 
+
+                            //
+                            item.ButtonText = "Zdejmij";
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                        case 6:
+                            break;
+                        case 7:
+                            break;
+
+                    }
+                    // Constants.Hero.inventory.oneHand = item;
                 }
-                // Constants.Hero.inventory.oneHand = item;
+                await Application.Current.MainPage.DisplayAlert("Ekwipunek", "Ekwipunek założony", "OK").ConfigureAwait(true);
+                /* }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("Sklep", "Brak funduszy", "OK").ConfigureAwait(true);
+                }
+                */
+
+
+
+
             }
-            await Application.Current.MainPage.DisplayAlert("Ekwipunek", "Ekwipunek założony", "OK").ConfigureAwait(true);
+            else
+            {
+             
+                if (Constants.allItems.TryGetValue(x.name, out item))
+                {
+                    switch (item.type)
+                    {
+                        case 1:
+                            Constants.Hero.inventory.oneHand = null;
+                           
+                            ;
+                            //
+                            item.ButtonText = "Załóż";
+
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                        case 6:
+                            break;
+                        case 7:
+                            break;
+
+                    }
+                    // Constants.Hero.inventory.oneHand = item;
+                }
+                await Application.Current.MainPage.DisplayAlert("Ekwipunek", "Ekwipunek zdjęty", "OK").ConfigureAwait(true);
+
+            }
+        }
+        async private void unequip(object sender)
+        {
+            Button button = (Button)sender;
+           
             /* }
             else
             {

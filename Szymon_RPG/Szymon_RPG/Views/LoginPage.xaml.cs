@@ -64,7 +64,7 @@ namespace Szymon_RPG.Views
             */
             //Przedmioty Startowe dopóki nie ma dwóch miast jest to na sztywno
             ConsumableItem item1 = new ConsumableItem() { name = "Mikstura Życia", type=0, hpRestore = 500, price = 50, image = "elixir.png", isConsuamble=true };
-            OneHandItem oneHand1 = new OneHandItem() { atk = 3, type=1, name = "Sztylet", price = 200, image = "dagger.png", isEquable = true };
+            OneHandItem oneHand1 = new OneHandItem() { atk = 3, type=1, name = "Sztylet",  price = 200, image = "dagger.png", IsEquable = true };
             ObservableCollection<Models.Item> items = new ObservableCollection<Item>();
             items.Add(item1);
             items.Add(oneHand1);
@@ -74,7 +74,7 @@ namespace Szymon_RPG.Views
             firstTown.Add(firstQuest);
             TownModel town = new TownModel() { Name = "Deling", Quests = firstTown, Shop = items, isUnlocked = true};
             Constants.towns.Add(town);
-            Constants.Hero.inventory.items = new List<Item>();
+            Constants.Hero.inventory.items = new ObservableCollection<Item>();
             Constants.allItems = new Dictionary<string, Item>();
             Constants.allItems.Add(item1.name, item1);
             Constants.allItems.Add(oneHand1.name, oneHand1);

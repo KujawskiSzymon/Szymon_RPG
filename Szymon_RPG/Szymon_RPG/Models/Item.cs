@@ -6,10 +6,26 @@ using System.Text;
 
 namespace Szymon_RPG.Models
 {
-   public  class Item : INotifyPropertyChanged
+    public class Item : INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private bool isEquable = false;
+
+        public bool IsEquable
+        {
+            get
+            {
+                return isEquable;
+            }
+            set
+            {
+                isEquable = value;
+                OnPropertyChanged("IsEquipped");
+            }
+        }
+
         public int Quantity
         {
             get
@@ -24,18 +40,7 @@ namespace Szymon_RPG.Models
             }
         }
 
-        public bool IsEquipped
-        {
-            get
-            {
-                return isEquipped;
-            }
-            set
-            {
-                isEquipped = value;
-                OnPropertyChanged("IsEquipped");
-            }
-        }
+
 
         public string image { get; set; }
         public string name { get; set; }
@@ -45,10 +50,10 @@ namespace Szymon_RPG.Models
 
 
         public bool isConsuamble { get; set; } = false;
-        public bool isEquable { get; set; } = false;
-        public bool isEquipped { get; set; } = false;
+       
 
-        public  enum itemType { CONSUMABLE,ONEHAND,TWOHAND,HELMET,ARMOR,BOOTS,RING,SHIELD};
+
+        public enum itemType { CONSUMABLE, ONEHAND, TWOHAND, HELMET, ARMOR, BOOTS, RING, SHIELD };
 
         protected virtual void OnPropertyChanged(string propertyName)
         {
@@ -57,6 +62,21 @@ namespace Szymon_RPG.Models
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        // Need to get know where to put this to work correctly...
+        private string buttonText="Załóż";
+
+        public String ButtonText{
+            get
+            {
+                return buttonText;
+            }
+            set
+            {
+                buttonText = value;
+                OnPropertyChanged("ButtonText");
+            }
+            }
 
     }
 }
