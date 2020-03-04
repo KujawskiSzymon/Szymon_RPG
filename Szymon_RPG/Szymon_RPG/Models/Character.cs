@@ -7,7 +7,7 @@ namespace Szymon_RPG.Models
     public class Character
     {
       public  string name { get; set; }
-        public static int exp { get; set; } = 0;
+        public  int exp { get; set; } = 0;
         public int lvl { get; set; } = 1;
         public int hp { get; set; }
       public  int mp { get; set; } 

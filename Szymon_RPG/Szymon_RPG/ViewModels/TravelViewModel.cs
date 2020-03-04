@@ -32,56 +32,56 @@ namespace Szymon_RPG.ViewModels
                      switch (fate)
                      {
                          case int n when (n <= 60):
-                             //
+                             Travel60();
                              break;
                          case int n when (n > 61 && n < 130):
-                            //);
+                             Travel61();
                              break;
                          case int n when (n > 129 && n < 199):
-                             fightTravel();
+                             Travel130();
                              break;
                          case int n when (n > 200 && n<262):
-                             MaxTravel();
+                             Travel199();
                              break;
                          case int n when (n > 261 && n<325):
-                             MaxTravel();
+                             Travel262();
                              break;
                          case int n when (n > 324 && n<400):
-                             MaxTravel();
+                             Travel325();
                              break;
                          case int n when (n > 400 && n <475):
-                             MaxTravel();
+                             Travel400();
                              break;
                          case int n when (n > 476 && n < 530):
-                             MaxTravel();
+                             Travel475();
                              break;
                          case int n when (n > 530 && n<600):
-                             MaxTravel();
+                             Travel530();
                              break;
                          case int n when (n >= 600 && n<680 ):
-                             MaxTravel();
+                             Travel600();
                              break;
                          case int n when (n >= 680 && n < 735):
-                             MaxTravel();
+                             Travel680();
                              break;
                          case int n when (n >= 735 && n<800):
-                             MaxTravel();
+                             Travel735();
                              break;
                         case int n when (n >= 800 && n<860):
-                             MaxTravel();
+                             Travel800();
                              break;
                         case int n when (n >= 860 && n<900):
-                             MaxTravel();
+                             Travel860();
                              break;
 
                          case int n when (n >= 900 && n<930):
-                             MaxTravel();
+                             Travel900();
                              break;
                          case int n when (n >= 931 && n<961):
-                             MaxTravel();
+                             Travel930();
                              break;
                          case int n when (n >= 961):
-                             MaxTravel();
+                             Travel961();
                              break;
                      }
                      townCount = Constants.actualTown;
@@ -162,115 +162,267 @@ namespace Szymon_RPG.ViewModels
 
         private void Travel60()
         {
-            InfoText = "Szedłeś i straciłeś";
-            RewardColor = "Red";
-            RewardText = "Pech - TODO gold/cokolwiek loss";
+            switch (Constants.actualTown)
+            {
+                case 0:
+                    InfoText = "Podczas podróży zgubiłeś dużo złota !";
+                    int lost = Convert.ToInt32(Constants.gold * 0.15);
+                    Constants.gold -= Convert.ToInt32(Constants.gold * 0.3);
+                    if (Constants.gold < 0)
+                    {
+                        Constants.gold = 0;
+                    }
+                    RewardColor = "Red";
+                    RewardText = "Straciłeś " + lost + " sztuk złota!";
+                    break;
+            }
+
+        }
+
+        private void Travel61()
+        {
+            switch (Constants.actualTown)
+            {
+                case 0:
+                    InfoText = "Podczas podróży zgubiłeś złoto !";
+                    int lost = Convert.ToInt32(Constants.gold * 0.07);
+                    Constants.gold -= Convert.ToInt32(Constants.gold * 0.3);
+                    if (Constants.gold < 0)
+                    {
+                        Constants.gold = 0;
+                    }
+                    RewardColor = "Red";
+                    RewardText = "Straciłeś "+lost+ " sztuk złota!";
+                    break;
+            }
+            
         }
         private void Travel130()
         {
-            InfoText = "Szedłeś i straciłeś";
-            RewardColor = "Red";
-            RewardText = "Pech - TODO gold/cokolwiek loss";
+            switch (Constants.actualTown)
+            {
+                case 0:
+                    InfoText = "Nie wydarzyło się nic ciekawego...";
+                    RewardColor = "Red";
+                    RewardText = "";
+                    break;
+            }
+            
         }
         private void Travel199()
         {
-            InfoText = "Szedłeś i straciłeś";
-            RewardColor = "Red";
-            RewardText = "Pech - TODO gold/cokolwiek loss";
+            switch (Constants.actualTown)
+            {
+                case 0:
+                    InfoText = "Znalazłeś miksturę życia !";
+                    RewardColor = "Green";
+                    RewardText = "Uzyskano miksturę życia!";
+                    Item item;
+                    if (Constants.allItems.TryGetValue("Mikstura Życia", out item))
+                    {
+                        if (Constants.Hero.inventory.items.Contains(item))
+                        {
+                            item.Quantity += 1;
+                        }
+                        else
+                        {
+                            Constants.Hero.inventory.items.Add(item);
+                            item.Quantity += 1;
+                        }
+                    }
+                    else
+                    {
+                        //Error
+                    }
+
+                        break;
+                    
+            }
+            
         }
         private void Travel262()
         {
-            InfoText = "Szedłeś i straciłeś";
-            RewardColor = "Red";
-            RewardText = "Pech - TODO gold/cokolwiek loss";
+            switch (Constants.actualTown)
+            {
+                case 0:
+                    InfoText = "Łatwy przeciwnik 1";
+                    IsImageEnemy = true;
+                    EnemyImg = "spooky.png";
+                    RewardColor = "Blue";
+                    RewardText = "";
+                    break;
+            }
+            
         }
         private void Travel325()
         {
-            InfoText = "Szedłeś i straciłeś";
-            RewardColor = "Red";
-            RewardText = "Pech - TODO gold/cokolwiek loss";
+            switch (Constants.actualTown)
+            {
+                case 0:
+                    InfoText = "Łatwy przeciwnik 2";
+                    IsImageEnemy = true;
+                    EnemyImg = "spooky.png";
+                    RewardColor = "Blue";
+                    RewardText = "";
+                    
+                    break;
+            }
+            
         }
         private void Travel400()
         {
-            InfoText = "Szedłeś i straciłeś";
-            RewardColor = "Red";
-            RewardText = "Pech - TODO gold/cokolwiek loss";
+            switch (Constants.actualTown)
+            {
+                case 0:
+                    InfoText = "Łatwy przeciwnik 3";
+                    IsImageEnemy = true;
+                    EnemyImg = "spooky.png";
+                    RewardColor = "Blue";
+                    RewardText = "";
+                    break;
+            }
+           
         }
         private void Travel475()
         {
-            InfoText = "Szedłeś i straciłeś";
-            RewardColor = "Red";
-            RewardText = "Pech - TODO gold/cokolwiek loss";
+            switch (Constants.actualTown)
+            {
+                case 0:
+                    Random r = new Random();
+                    int exp = r.Next(1, 10);
+                    InfoText = "Pomogłeś pobliskim mieszkańcom";
+                    RewardColor = "Green";
+                    RewardText = "Zdobyłeś "+ exp+ " doświadczenia";
+                    Constants.Hero.exp += exp; //Check Level
+                    break;
+            }
+            
         }
         private void Travel530()
         {
-            InfoText = "Szedłeś i straciłeś";
-            RewardColor = "Red";
-            RewardText = "Pech - TODO gold/cokolwiek loss";
+            switch (Constants.actualTown)
+            {
+                case 0:
+                    Random r = new Random();
+                    int exp = r.Next(10, 60);
+                    InfoText = "Znalazłeś sakiewkę z pieniędzmi";
+                    RewardColor = "Green";
+                    RewardText = "Zdobyłeś " + exp + " złota";
+                    Constants.gold += exp; //Check Level
+                    break;
+            }
+            
         }
         private void Travel600()
         {
-            InfoText = "Szedłeś i straciłeś";
-            RewardColor = "Red";
-            RewardText = "Pech - TODO gold/cokolwiek loss";
+            switch (Constants.actualTown)
+            {
+                case 0:
+                    InfoText = "Uncommon 1";
+                    IsImageEnemy = true;
+                    EnemyImg = "spooky.png";
+                    RewardColor = "Blue";
+                    RewardText = "";
+                    break;
+            }
+            
         }
 
         private void Travel680()
         {
-            InfoText = "Szedłeś i coś małego zyskałeś";
-            RewardColor = "Blue";
-            RewardText = "Pech - TODO gold/Cokolwiek zysk";
+            switch (Constants.actualTown)
+            {
+                case 0:
+                    InfoText = "Tutaj odblokujesz coś nowego w grze";
+                    RewardColor = "Blue";
+                    RewardText = "TODO";
+                    break;
+            }
+        
         }
         private void Travel735()
         {
-            InfoText = "Szedłeś i straciłeś";
-            RewardColor = "Red";
-            RewardText = "Pech - TODO gold/cokolwiek loss";
+            switch (Constants.actualTown)
+            {
+                case 0:
+                    InfoText = "Uncommon 2";
+                    IsImageEnemy = true;
+                    EnemyImg = "spooky.png";
+                    RewardColor = "Blue";
+                    RewardText = "";
+                    break;
+            }
+            
         }
         private void Travel800()
         {
-            InfoText = "Szedłeś i straciłeś";
-            RewardColor = "Red";
-            RewardText = "Pech - TODO gold/cokolwiek loss";
+            switch (Constants.actualTown)
+            {
+                case 0:
+                    InfoText = "Znalazłeś skrzynię";
+                    RewardColor = "Red";
+                    RewardText = "TODO: wybór otworzenia - losowanie przemdiotu/mimic";
+                    break;
+            }
+            
         }
         private void Travel860()
         {
-            InfoText = "Szedłeś i straciłeś";
-            RewardColor = "Red";
-            RewardText = "Pech - TODO gold/cokolwiek loss";
+            switch (Constants.actualTown)
+            {
+                case 0:
+                    InfoText = "Uratowałeś turystę przed dzikimi zwierzętami";
+                    Random r = new Random();
+                    int exp = r.Next(15, 35);
+                    RewardColor = "Green";
+                    Constants.Hero.exp += exp;
+                    RewardText = "Zyskujesz "+exp+" punktów doświadczenia";
+                    break;
+            }
+            
         }
         private void Travel900()
         {
-            InfoText = "Szedłeś i straciłeś";
-            RewardColor = "Red";
-            RewardText = "Pech - TODO gold/cokolwiek loss";
+            switch (Constants.actualTown)
+            {
+                case 0:
+                    InfoText = "Rare";
+                    IsImageEnemy = true;
+                    EnemyImg = "spooky.png";
+                    RewardColor = "Blue";
+                    RewardText = "";
+                    break;
+            }
+            
         }
         private void Travel930()
         {
-            InfoText = "Szedłeś i straciłeś";
-            RewardColor = "Red";
-            RewardText = "Pech - TODO gold/cokolwiek loss";
+            switch (Constants.actualTown)
+            {
+                case 0:
+                    InfoText = "Tutaj zdobędziesz jednorazowo umiejętność/zdobędziesz exp/gold";
+                    RewardColor = "Green";
+                    RewardText = "TODO";
+                    break;
+            }
+            
         }
         private void Travel961()
         {
-            InfoText = "Szedłeś i straciłeś";
-            RewardColor = "Red";
-            RewardText = "Pech - TODO gold/cokolwiek loss";
+            switch (Constants.actualTown)
+            {
+                case 0:
+                    InfoText = "Znalazłeś ukrytą skrzynię pełną pieniędzy!";
+                    Random r = new Random();
+                    int exp = r.Next(200, 800);
+                    RewardColor = "Green";
+                    Constants.gold += exp;
+                    RewardText = "Zyskujesz " + exp + " złota";
+                    break;
+            }
+           
         }
      
-        private void fightTravel()
-        {
-            InfoText = "Walka";
-            IsImageEnemy = true;
-            EnemyImg = "spooky.png";
-            
-            RewardText = "";
-        }
-        private void MaxTravel()
-        {
-            InfoText = "Szedłeś i zyskałeś";
-            RewardColor = "Green";
-            RewardText = "Duzy zysk";
-        }
+      
     }
 }
