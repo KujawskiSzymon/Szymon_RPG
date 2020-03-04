@@ -28,9 +28,9 @@ namespace Szymon_RPG.Views
            Navigation.PushAsync(new SkillPointMenu());
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void GotoEquipment(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new CurrentEquipment());
         }
       protected override void OnAppearing()
         {

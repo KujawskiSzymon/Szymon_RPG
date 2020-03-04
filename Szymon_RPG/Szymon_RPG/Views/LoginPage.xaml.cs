@@ -82,11 +82,16 @@ namespace Szymon_RPG.Views
             items.Add(ring1);
             //Twohand!
 
+
+
             Quest firstQuest = new Quest() { active = false, exp = 30, done = 0, desc = "Tutaj znajduje się opis pierwszego questa", gold = 50, itemReward = null, name = "Pierwszy Quest", reqDone = 3, reward = "Tutaj znajduje się opis nagrody" };
             ObservableCollection<Quest> firstTown = new ObservableCollection<Quest>();
             firstTown.Add(firstQuest);
-            TownModel town = new TownModel() { Name = "Deling", Quests = firstTown, Shop = items, isUnlocked = true};
+       
+            
+            TownModel town = new TownModel() { image="village.jpg",noTown=0, Name = "Deling", Quests = firstTown, Shop = items, isUnlocked = true};
             Constants.towns.Add(town);
+            Constants.actualTown = 0;
             Constants.Hero.inventory.items = new ObservableCollection<Item>();
             Constants.allItems = new Dictionary<string, Item>();
             Constants.allItems.Add(item1.name, item1);

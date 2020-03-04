@@ -28,7 +28,8 @@
             </ListView.ItemTemplate>
         </ListView>
 
-            <Button Text="Rozdaj Punkty Umiejętności" Clicked="GoToSkillPoints" VerticalOptions="Center" HorizontalOptions="Center" />
+            <Button Text="Rozdaj Punkty Umiejętności" Clicked="GoToSkillPoints" VerticalOptions="Start" HorizontalOptions="Center" />
+            <Button Text="Zobacz Ekwipunek" Clicked="GotoEquipment" VerticalOptions="End" HorizontalOptions="Center" />
         </StackLayout>
 
         

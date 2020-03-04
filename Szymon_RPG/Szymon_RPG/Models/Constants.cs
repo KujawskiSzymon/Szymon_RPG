@@ -38,6 +38,10 @@ namespace Szymon_RPG.Models
         // Wszystkie Przedmioty??
 
         public static Dictionary<string, Item> allItems;
+
+        //Questy
+
+       
         
         
 

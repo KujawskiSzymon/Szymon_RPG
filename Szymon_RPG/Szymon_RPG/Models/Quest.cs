@@ -16,6 +16,7 @@ namespace Szymon_RPG.Models
         public Item itemReward { get; set; }
         public int gold { get; set; }
         public int exp { get; set; }
+        public bool activable { get; set; } = true;
 
     }
 }

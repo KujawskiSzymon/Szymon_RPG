@@ -8,9 +8,11 @@ namespace Szymon_RPG.Models
     public class TownModel
     {
         public string Name { get; set; }
+        public string image { get; set; }
        public ObservableCollection<Item> Shop { get; set; }
         public ObservableCollection<Quest> Quests { get; set; }
         public bool isUnlocked { get; set; }
+        public int noTown { get; set; }
 
     }
 }

@@ -13,16 +13,16 @@
     <ContentPage.Content>
       
         <StackLayout>
-            <Label Text="Nazwa Miasta" VerticalOptions="Center" HorizontalOptions="Center"/>
-            <Image Source="village.jpg"  HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding TownName}" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Image Source="{Binding ImageTown}"  HorizontalOptions="CenterAndExpand"/>
             <Button VerticalOptions="Center" HorizontalOptions="Start" BackgroundColor="Transparent" BorderColor="Transparent" Text="Wylecz się" TextColor="Green"/>
             <Grid >
                 <Label VerticalOptions="Start" HorizontalOptions="StartAndExpand" Text="Sklep"/>
-                <ImageButton VerticalOptions="End" HorizontalOptions="End" Command="{Binding ButtonClicked}" WidthRequest="50" HeightRequest="35" Source="arrow.png"/>
+                <ImageButton VerticalOptions="End" HorizontalOptions="End"  BackgroundColor="Transparent" Command="{Binding shopButton}" WidthRequest="50" HeightRequest="35" Source="arrow.png"/>
             </Grid>
             <Grid >
                 <Label VerticalOptions="Start" HorizontalOptions="StartAndExpand" Text="Zadania"/>
-                <ImageButton VerticalOptions="End" HorizontalOptions="End" WidthRequest="50" HeightRequest="35" Source="arrow.png"/>
+                <ImageButton VerticalOptions="End" Command="{Binding tasksButton}" BackgroundColor="Transparent" HorizontalOptions="End" WidthRequest="50" HeightRequest="35" Source="arrow.png"/>
             </Grid>
             
         </StackLayout>
