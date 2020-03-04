@@ -32,7 +32,7 @@ namespace Szymon_RPG.ViewModels
             Quests = Constants.towns[Constants.actualTown].Quests;
             startQuest = new Command(execute: (sender) =>
             {
-                //buyItem(sender);
+                start(sender);
             });
         }
 
@@ -44,6 +44,11 @@ namespace Szymon_RPG.ViewModels
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        private void start (Object sender){
+            Button button = (Button)sender;
+            Quest x = (Quest)button.BindingContext;
         }
 
     }
