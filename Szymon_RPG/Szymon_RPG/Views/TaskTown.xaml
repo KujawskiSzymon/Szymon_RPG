@@ -25,12 +25,16 @@
                                             <ColumnDefinition Width="2*" />
                                             <ColumnDefinition Width="1*" />
                                             <ColumnDefinition Width="1*" />
+                         
+
                                         </Grid.ColumnDefinitions>
                                     <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding name}" Grid.Column="0"/>
-                                    <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding desc}" Grid.Column="1"/>
+                                        <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding desc}" Grid.Column="1"/>
+                                 
 
                                         <Button x:Name="startQuest" Command="{Binding startQuest,Source={x:Reference Name=Home}}" CommandParameter="{Binding Source={x:Reference startQuest}}" IsVisible="{Binding activable}"   Text="Rozpocznij" HorizontalOptions="Center" VerticalOptions="Center"  Grid.Column="2"/>
-                                        
+                                        <Label IsVisible="{Binding ShowInfo}" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Progress}" Grid.Column="2"/>
+                                        <Image HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding reward}" Grid.Column="3"/>
 
                                     </Grid>
                                 </StackLayout>

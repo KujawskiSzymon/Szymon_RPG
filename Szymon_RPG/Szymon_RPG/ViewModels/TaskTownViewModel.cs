@@ -29,6 +29,10 @@ namespace Szymon_RPG.ViewModels
 
         public TaskTownViewModel()
         {
+            foreach(Quest quest in Constants.towns[Constants.actualTown].Quests)
+            {
+                quest.Progress= quest.done + "/" + quest.reqDone;
+            }
             Quests = Constants.towns[Constants.actualTown].Quests;
             startQuest = new Command(execute: (sender) =>
             {
@@ -46,9 +50,14 @@ namespace Szymon_RPG.ViewModels
             }
         }
 
-        private void start (Object sender){
+       async private void start (Object sender){
             Button button = (Button)sender;
             Quest x = (Quest)button.BindingContext;
+
+            x.activable = false;
+            button.IsVisible = false;
+            x.ShowInfo = true;
+            await Application.Current.MainPage.DisplayAlert("Zadanie", "Rozpocząłeś zadanie!", "OK").ConfigureAwait(true);
         }
 
     }

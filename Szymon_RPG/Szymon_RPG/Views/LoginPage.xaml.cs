@@ -84,7 +84,7 @@ namespace Szymon_RPG.Views
 
 
 
-            Quest firstQuest = new Quest() { active = false, exp = 30, done = 0, desc = "Tutaj znajduje się opis pierwszego questa", gold = 50, itemReward = null, name = "Pierwszy Quest", reqDone = 3, reward = "Tutaj znajduje się opis nagrody" };
+            Quest firstQuest = new Quest() {  exp = 30, done = 0, desc = "Tutaj znajduje się opis pierwszego questa", gold = 50, itemReward = null, name = "Pierwszy Quest", reqDone = 3, reward = "armor.png" };
             ObservableCollection<Quest> firstTown = new ObservableCollection<Quest>();
             firstTown.Add(firstQuest);
        
