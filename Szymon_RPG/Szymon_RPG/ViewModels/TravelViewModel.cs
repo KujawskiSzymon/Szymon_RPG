@@ -5,6 +5,7 @@ using System.Diagnostics;
 
 using System.Windows.Input;
 using Szymon_RPG.Models;
+using Szymon_RPG.Views;
 using Xamarin.Forms;
 
 namespace Szymon_RPG.ViewModels
@@ -29,7 +30,8 @@ namespace Szymon_RPG.ViewModels
         {
             fightButton = new Command(execute: () =>
              {
-
+                 var navigationPage = Application.Current.MainPage;
+                 navigationPage.Navigation.PushAsync(new Fight());
              }
             );
 
@@ -269,7 +271,7 @@ namespace Szymon_RPG.ViewModels
             {
                 case 0:
             
-                    Enemy enemy = Constants.enemiesCommon[0];
+                    Enemy enemy = Constants.allEnemies[0];
                     InfoText = "Zaatakaowała Cię Osa!\n"+"Poziom: "+enemy.lvl+"\n";
                     EnemyImg = enemy.image;
                     IsImageEnemy = true;

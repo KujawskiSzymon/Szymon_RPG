@@ -8,6 +8,7 @@ namespace Szymon_RPG.Models
     {
         public int id; //[]in list??
         public string image;
+        public string rarity;
         public int lvl; // ?
         public string name;
         public int maxHP;

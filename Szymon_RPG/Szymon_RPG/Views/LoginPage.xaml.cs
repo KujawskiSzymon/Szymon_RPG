@@ -91,14 +91,11 @@ namespace Szymon_RPG.Views
             //enemies
 
 
-            Enemy enemy = new Enemy() {name = "Osa" ,image="bee.png", def=3, exp= 10, gold = 10, hp=40, id=0, items=null,loot=null, mag=3, str=3, luck=3 , lvl=1, mp= 12, spr=3, speed= 5, maxHP=40,maxMP=12};
+            Enemy enemy = new Enemy() {name = "Osa", rarity = "Common", image="bee.png", def=3, exp= 10, gold = 10, hp=40, id=0, items=null,loot=null, mag=3, str=3, luck=3 , lvl=1, mp= 12, spr=3, speed= 5, maxHP=40,maxMP=12};
 
-            Constants.enemiesCommon = new List<Enemy>();
-            Constants.enemiesCommon.Add(enemy);
-            Constants.enemiesUncommon = new List<Enemy>();
-            Constants.enemiesRare = new List<Enemy>();
-            Constants.enemiesChampion = new List<Enemy>();
-            Constants.enemiesLegendary = new List<Enemy>();
+            Constants.allEnemies = new List<Enemy>();
+            Constants.allEnemies.Add(enemy);
+           
        
             
             TownModel town = new TownModel() { image="village.jpg",noTown=0, Name = "Deling", Quests = firstTown, Shop = items, isUnlocked = true};
