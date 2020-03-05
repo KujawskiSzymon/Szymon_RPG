@@ -41,6 +41,16 @@ namespace Szymon_RPG.Models
 
         //Questy
 
+
+        //Enemies
+
+        public static List<Enemy> enemiesCommon;
+        public static List<Enemy> enemiesUncommon;
+        public static List<Enemy> enemiesRare;
+        public static List<Enemy> enemiesChampion;
+        public static List<Enemy> enemiesLegendary;
+        public static List<Enemy> bosses;
+
        
         
         

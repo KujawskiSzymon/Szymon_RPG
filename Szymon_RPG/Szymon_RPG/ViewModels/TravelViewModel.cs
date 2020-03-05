@@ -12,20 +12,30 @@ namespace Szymon_RPG.ViewModels
    public class TravelViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        public ICommand fightButton{ get; set; }
         private string infoText="";
         private string rewardText="";
         private string enemyImg="";
         private bool isImageEnemy = false;
         private string rewardColor;
-
+        private bool isFightable = false;
         public int townCount;
+
+
 
 
         public ICommand ButtonClicked { get; set; }
        public TravelViewModel()
         {
+            fightButton = new Command(execute: () =>
+             {
+
+             }
+            );
+
             ButtonClicked = new Command(execute: () =>
                  {
+                     IsFightable = false;
                      IsImageEnemy = false;
                      Random random = new Random();
                      int fate = random.Next(1, 1000);
@@ -88,6 +98,19 @@ namespace Szymon_RPG.ViewModels
                  }
                  
             );
+        }
+
+        public Boolean IsFightable
+        {
+            get
+            {
+                return isFightable;
+            }
+            set
+            {
+                isFightable = value;
+                OnPropertyChanged("IsFightable");
+            }
         }
 
         public String RewardColor
@@ -245,9 +268,12 @@ namespace Szymon_RPG.ViewModels
             switch (Constants.actualTown)
             {
                 case 0:
-                    InfoText = "Łatwy przeciwnik 1";
+            
+                    Enemy enemy = Constants.enemiesCommon[0];
+                    InfoText = "Zaatakaowała Cię Osa!\n"+"Poziom: "+enemy.lvl+"\n";
+                    EnemyImg = enemy.image;
                     IsImageEnemy = true;
-                    EnemyImg = "spooky.png";
+                    IsFightable = true;
                     RewardColor = "Blue";
                     RewardText = "";
                     break;
