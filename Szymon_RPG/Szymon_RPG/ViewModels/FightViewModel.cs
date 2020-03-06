@@ -6,23 +6,76 @@ using Szymon_RPG.Models;
 
 namespace Szymon_RPG.ViewModels
 {
-   public class FightViewModel : INotifyPropertyChanged
+    public class FightViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         public FightViewModel()
         {
-            
+
         }
 
 
 
-      private  string image=Constants.allEnemies[Constants.enemyNo].image;
-      private  int maxHp= Constants.allEnemies[Constants.enemyNo].maxHP;
-      private  int hp= Constants.allEnemies[Constants.enemyNo].hp;
-      private  int maxMp= Constants.allEnemies[Constants.enemyNo].maxMP;
-      private  int mp= Constants.allEnemies[Constants.enemyNo].mp;
-        
+        private string image = Constants.allEnemies[Constants.enemyNo].image;
+        private int maxHp = Constants.allEnemies[Constants.enemyNo].maxHP;
+        private int hp = Constants.allEnemies[Constants.enemyNo].hp;
+        private int maxMp = Constants.allEnemies[Constants.enemyNo].maxMP;
+        private int mp = Constants.allEnemies[Constants.enemyNo].mp;
+        private int playermaxHp = Constants.Hero.maxHP;
+        private int playerhp = Constants.Hero.hp;
+        private int playermaxMp = Constants.Hero.maxMP;
+        private int playermp = Constants.Hero.mp;
+
+        public int PlayermaxHp
+        {
+            get
+            {
+                return playermaxHp;
+            }
+            set
+            {
+                playermaxHp = value;
+                OnPropertyChanged("PlayermaxHp");
+            }
+        }
+        public int Playerhp
+        {
+            get
+            {
+                return playerhp;
+            }
+            set
+            {
+                playerhp = value;
+                OnPropertyChanged("Playerhp");
+            }
+        }
+        public int PlayermaxMp
+        {
+            get
+            {
+                return playermaxMp;
+            }
+            set
+            {
+                playermaxMp = value;
+                OnPropertyChanged("PlayermaxMp");
+            }
+        }
+        public int Playermp
+        {
+            get
+            {
+                return playermp;
+            }
+            set
+            {
+                playermp = value;
+                OnPropertyChanged("Playermp");
+            }
+        }
+
         public String Image
         {
             get

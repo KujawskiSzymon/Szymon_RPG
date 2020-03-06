@@ -10,6 +10,8 @@ namespace Szymon_RPG.Models
         public  int exp { get; set; } = 0;
         public int lvl { get; set; } = 1;
         public int hp { get; set; }
+        public int maxHp { get; set; }
+        public int maxMp { get; set; }
       public  int mp { get; set; } 
         public int atk { get; set; } 
         public int def { get; set; } 
@@ -60,8 +62,8 @@ namespace Szymon_RPG.Models
             
 
 
-            hp = Convert.ToInt32(live * 7 * 1.2) + toAddHp ;
-            mp  = Convert.ToInt32(mpRaw * 2.2 * 1.2) + toAddMp;
+            maxHp = Convert.ToInt32(live * 7 * 1.2) + toAddHp ;
+            maxMp  = Convert.ToInt32(mpRaw * 2.2 * 1.2) + toAddMp;
            atk  = Convert.ToInt32(str * 1.2) + toAddStr;
          def = Convert.ToInt32(vit * 1.2)+ toAddDef;
         matk  = Convert.ToInt32(mag * 1.2)+ toAddMatk;

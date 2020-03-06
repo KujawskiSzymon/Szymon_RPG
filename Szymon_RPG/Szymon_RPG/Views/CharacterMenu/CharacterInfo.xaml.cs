@@ -37,8 +37,8 @@ namespace Szymon_RPG.Views
             Constants.Hero.updateStats();
             menuStats = new List<StatInfo>();
             StatInfo name = new StatInfo() { Label = "Nazwa Gracza", Info = Constants.Hero.name };
-            StatInfo hp = new StatInfo() { Label = "HP", Info = Constants.Hero.hp.ToString() };
-            StatInfo mp = new StatInfo() { Label = "MP", Info = Constants.Hero.mp.ToString() };
+            StatInfo hp = new StatInfo() { Label = "HP", Info = Constants.Hero.maxHp.ToString() };
+            StatInfo mp = new StatInfo() { Label = "MP", Info = Constants.Hero.maxMp.ToString() };
             StatInfo lvl = new StatInfo() { Label = "Level", Info = Constants.Hero.lvl.ToString() };
             StatInfo str = new StatInfo() { Label = "Siła", Info = Constants.Hero.atk.ToString() };
             StatInfo mag = new StatInfo() { Label = "Magia", Info = Constants.Hero.matk.ToString() };

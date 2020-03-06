@@ -33,7 +33,8 @@ namespace Szymon_RPG.Views
             Entry_Username.Completed += (sender, e) => Entry_Password.Focus();
             Entry_Password.Completed += (sender, e) => SignInProcedure(sender, e);
             Constants.towns = new ObservableCollection<TownModel>();
-            Constants.Hero = new Models.Character() { inventory = new Models.Inventory(), name = "Szymon" };
+            Constants.Hero = new Models.Character() { hp = 40, mp=10,inventory = new Models.Inventory(), name = "Szymon" };
+            Constants.Hero.updateStats();
             Constants.levelRate.Add(1, 50);
             Constants.levelRate.Add(2, 75);
             Constants.levelRate.Add(3, 125);
