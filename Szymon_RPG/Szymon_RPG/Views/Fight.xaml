@@ -50,16 +50,18 @@
             </Grid>
 
 
-            <Grid>
+            <Grid IsVisible="{Binding IsMenu}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
-                <Button Text="Atakuj" Grid.Row="0"/>
+                <Button Command="{Binding attackButton}" Text="Atakuj" Grid.Row="0"/>
                 <Button Text="Magia" Grid.Row="1"/>
                 <Button Text="Przedmioty" Grid.Row="2"/>
             </Grid>
+
+            <Label HorizontalOptions="End" VerticalOptions="Center" Text="{Binding BattleLog}"/>
 
         </StackLayout>
     </ContentPage.Content>

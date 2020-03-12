@@ -36,8 +36,7 @@ namespace Szymon_RPG.Models
 
 
 
-        public int maxHP { get; set; }
-        public int maxMP { get; set; }
+       
         public int reqExp { get; set; }
 
         public void updateStats()
