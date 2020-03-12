@@ -182,27 +182,34 @@ namespace Szymon_RPG.ViewModels
             }
         }
 
-        public async void battle()
+        public async void checkBattleStatus()
         {
-            if (isPLayerAlive() && isEnemyAlive())
+            if (isPLayerAlive())
             {
-                IsMenu = true;
+                if (isEnemyAlive())
+                {
+
+                }
+                else
+                {
+
+                }
 
             }
             else
             {
-                var navigationPage = Application.Current.MainPage;
-                await navigationPage.Navigation.PopAsync().ConfigureAwait(true);
+                
             }
+
 
         }
         public bool isPLayerAlive()
         {
-            return  playerhp > 0;
+            return Playerhp > 0;
         }
         public bool isEnemyAlive()
         {
-           return hp > 0;
+           return Hp > 0;
         }
 
        public void playerAttack()
@@ -210,17 +217,21 @@ namespace Szymon_RPG.ViewModels
             IsMenu = false;
             string msg;
             int damage = Constants.Hero.atk - Constants.allEnemies[Constants.enemyNo].def;
+            Random r = new Random();
+          int mod =  r.Next(70, 130)/100;
+            damage = Convert.ToInt32(damage * mod);
             if (damage <= 0)
                 damage = 1;
             if (isHit(0))
             {
-                hp -= damage;
+                Hp -= damage;
                 msg = Constants.Hero.name + " trafia i zadaje " + damage + " obrażeń\n";
             }
             else
                 msg = Constants.Hero.name + " nie trafia !\n";
             BattleLog += msg;
-            battle();
+            checkBattleStatus();
+            enemyAttack();
 
         }
         public void enemyAttack()
@@ -229,16 +240,22 @@ namespace Szymon_RPG.ViewModels
             int damage = Constants.allEnemies[Constants.enemyNo].str - Constants.Hero.def;
             if (damage <= 0)
                 damage = 1;
+            Random r = new Random();
+            int mod = r.Next(70, 130) / 100;
+            damage = Convert.ToInt32(damage * mod);
             if (isHit(1))
             {
-                Constants.Hero.hp -= damage;
+                Playerhp -= damage;
 
                 msg = Constants.allEnemies[Constants.enemyNo].name + " trafia i zadaje " + damage + " obrażeń\n";
             }
             else
                 msg = Constants.allEnemies[Constants.enemyNo].name + " nie trafia !\n";
             BattleLog += msg;
-            battle();
+            
+            checkBattleStatus();
+            IsMenu = true;
+           
 
         }
 

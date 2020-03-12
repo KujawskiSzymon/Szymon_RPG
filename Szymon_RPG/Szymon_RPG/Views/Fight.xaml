@@ -60,8 +60,10 @@
                 <Button Text="Magia" Grid.Row="1"/>
                 <Button Text="Przedmioty" Grid.Row="2"/>
             </Grid>
-
-            <Label HorizontalOptions="End" VerticalOptions="Center" Text="{Binding BattleLog}"/>
+            <ScrollView>
+                <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding BattleLog}"/>
+            </ScrollView>
+           
 
         </StackLayout>
     </ContentPage.Content>
