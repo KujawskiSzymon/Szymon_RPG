@@ -92,10 +92,9 @@ namespace Szymon_RPG.Views
             //enemies
 
 
-            Enemy enemy = new Enemy() {name = "Osa", rarity = "Common", image="bee.png", def=3, exp= 10, gold = 10, hp=40, id=0, items=null,loot=null, mag=3, str=3, luck=3 , lvl=1, mp= 12, spr=3, speed= 5, maxHP=40,maxMP=12};
-
-            Constants.allEnemies = new List<Enemy>();
-            Constants.allEnemies.Add(enemy);
+            Enemy enemy = new Enemy() { name = "Osa", rarity = "Common", image="bee.png", def=3, exp= 10, gold = 10, hp=40, id=0, items=new List<Item>(),loot=new List<Item>(), mag=3, str=3, luck=3 , lvl=1, mp= 12, spr=3, speed= 2, maxHP=40,maxMP=12};
+           
+           
            
        
             
@@ -112,6 +111,11 @@ namespace Szymon_RPG.Views
             Constants.allItems.Add(boot1.name, boot1);
             Constants.allItems.Add(ring1.name, ring1);
 
+            enemy.addLoot(new List<Item>() { item1 });
+
+
+            Constants.allEnemies = new List<Enemy>();
+            Constants.allEnemies.Add(enemy);
         }
 
 

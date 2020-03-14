@@ -39,15 +39,17 @@
                     
                 </Grid.ColumnDefinitions>
 
-                <Label Text="{Binding Playerhp}" Grid.Column="0"/>
-                <Label Text="{Binding PlayermaxHp}" Grid.Column="1"/>
-                <Label Text="{Binding Playermp}" Grid.Column="2"/>
-                <Label Text="{Binding PlayermaxMp}" Grid.Column="3"/>
-                <Label Text="{Binding Hp}" Grid.Column="4"/>
-                <Label Text="{Binding MaxHp}" Grid.Column="5"/>
-                <Label Text="{Binding Mp}" Grid.Column="6"/>
-                <Label Text="{Binding MaxMp}" Grid.Column="7"/>
+                <Label Text="{Binding Playerhp, Mode=TwoWay}" Grid.Column="0"/>
+                <Label Text="{Binding PlayermaxHp,Mode=TwoWay}" Grid.Column="1"/>
+                <Label Text="{Binding Playermp,Mode=TwoWay}" Grid.Column="2"/>
+                <Label Text="{Binding PlayermaxMp,Mode=TwoWay}" Grid.Column="3"/>
+                <Label Text="{Binding Hp,Mode=TwoWay}" Grid.Column="4"/>
+                <Label Text="{Binding MaxHp,Mode=TwoWay}" Grid.Column="5"/>
+                <Label Text="{Binding Mp,Mode=TwoWay}" Grid.Column="6"/>
+                <Label Text="{Binding MaxMp,Mode=TwoWay}" Grid.Column="7"/>
             </Grid>
+            <Label Text="{Binding RewardInfo}"/>
+            <Button Text="Powrót" Command="{Binding exitButton}" IsVisible="{Binding IsExit}"/>
 
 
             <Grid IsVisible="{Binding IsMenu}">
@@ -60,7 +62,7 @@
                 <Button Text="Magia" Grid.Row="1"/>
                 <Button Text="Przedmioty" Grid.Row="2"/>
             </Grid>
-            <ScrollView>
+            <ScrollView HorizontalOptions="EndAndExpand">
                 <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding BattleLog}"/>
             </ScrollView>
            

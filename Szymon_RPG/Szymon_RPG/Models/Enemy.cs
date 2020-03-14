@@ -6,6 +6,12 @@ namespace Szymon_RPG.Models
 {
    public class Enemy
     {
+        public Enemy()
+        {
+           
+            
+        }
+
         public int id; //[]in list??
         public string image;
         public string rarity;
@@ -17,7 +23,7 @@ namespace Szymon_RPG.Models
         public int mp;
         public int exp;
         public int gold;
-        public List<Item> loot;
+        public  List<Item> loot;
         public int str;
         public int def;
         public int mag;
@@ -25,6 +31,23 @@ namespace Szymon_RPG.Models
         public int luck;
         public int speed;
         public List<Item> items; //uses in fight
+
+        public void addItems(List<Item> items)
+        {
+            items = new List<Item>();
+            foreach (Item item in items)
+            {
+                this.items.Add(item);
+            }
+        }
+      public  void addLoot(List<Item> items)
+        {
+            
+            foreach (Item item in items)
+            {
+                loot.Add(item);
+            }
+        }
 
        
         

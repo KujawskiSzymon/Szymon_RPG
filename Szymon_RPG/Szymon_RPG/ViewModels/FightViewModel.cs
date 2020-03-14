@@ -11,6 +11,8 @@ namespace Szymon_RPG.ViewModels
     public class FightViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        public List<Item> loots;
+
 
         public FightViewModel()
         {
@@ -19,9 +21,17 @@ namespace Szymon_RPG.ViewModels
                 playerAttack();
             }
             );
+            exitButton = new Command(execute: () =>
+            {
+                exit();
+            }
+            );
+            loots = new List<Item>();
+
         }
 
         public ICommand attackButton { get; set; }
+        public ICommand exitButton { get; set; }
         private string battleLog = "";
         private bool isMenu = true;
         private string image = Constants.allEnemies[Constants.enemyNo].image;
@@ -33,6 +43,21 @@ namespace Szymon_RPG.ViewModels
         private int playerhp = Constants.Hero.hp;
         private int playermaxMp = Constants.Hero.maxMp;
         private int playermp = Constants.Hero.mp;
+        private string rewardInfo = "";
+        private bool isExit=false;
+
+        public Boolean IsExit
+        {
+            get
+            {
+                return isExit;
+            }
+            set
+            {
+                isExit = value;
+                OnPropertyChanged("IsExit");
+            }
+        }
 
         public Boolean IsMenu
         {
@@ -95,6 +120,20 @@ namespace Szymon_RPG.ViewModels
                 OnPropertyChanged("Playermp");
             }
         }
+
+        public String RewardInfo
+        {
+            get
+            {
+                return rewardInfo;
+            }
+            set
+            {
+                rewardInfo = value;
+                OnPropertyChanged("RewardInfo");
+            }
+        }
+
         public String BattleLog
         {
             get
@@ -188,17 +227,18 @@ namespace Szymon_RPG.ViewModels
             {
                 if (isEnemyAlive())
                 {
-
+                    /// the battle continues...
                 }
                 else
                 {
-
+                    winBattle();
                 }
 
             }
             else
             {
-                
+                await Application.Current.MainPage.DisplayAlert("Powiadomienie", "Przegrałeś", "Ok").ConfigureAwait(true);
+               await  Application.Current.MainPage.Navigation.PopToRootAsync(true).ConfigureAwait(true);
             }
 
 
@@ -218,7 +258,8 @@ namespace Szymon_RPG.ViewModels
             string msg;
             int damage = Constants.Hero.atk - Constants.allEnemies[Constants.enemyNo].def;
             Random r = new Random();
-          int mod =  r.Next(70, 130)/100;
+            int modify = r.Next(70, 130);
+            double mod = (double)modify / 100;
             damage = Convert.ToInt32(damage * mod);
             if (damage <= 0)
                 damage = 1;
@@ -230,6 +271,7 @@ namespace Szymon_RPG.ViewModels
             else
                 msg = Constants.Hero.name + " nie trafia !\n";
             BattleLog += msg;
+            
             checkBattleStatus();
             enemyAttack();
 
@@ -238,11 +280,13 @@ namespace Szymon_RPG.ViewModels
         {
             string msg;
             int damage = Constants.allEnemies[Constants.enemyNo].str - Constants.Hero.def;
+         
+            Random r = new Random();
+            int modify = r.Next(70, 130);
+            double mod = (double)modify / 100;
+            damage = Convert.ToInt32(damage * mod);
             if (damage <= 0)
                 damage = 1;
-            Random r = new Random();
-            int mod = r.Next(70, 130) / 100;
-            damage = Convert.ToInt32(damage * mod);
             if (isHit(1))
             {
                 Playerhp -= damage;
@@ -261,15 +305,85 @@ namespace Szymon_RPG.ViewModels
 
         public bool isHit(int who)
         {
+            int baseHit = 80;
+
             Random r = new Random();
-            int modify = r.Next(80, 120)/100;
-            int playerStat =Convert.ToInt32( modify * Convert.ToInt32(Constants.Hero.atk * 0.25 + Constants.Hero.agi + Constants.Hero.luck * 0.25));
-            modify = r.Next(80, 120) / 100;
-            int enemyStat = Convert.ToInt32( modify * Convert.ToInt32(Constants.allEnemies[Constants.enemyNo].str * 0.25 + Constants.allEnemies[Constants.enemyNo].speed + Constants.allEnemies[Constants.enemyNo].luck * 0.25));
+            int modify = r.Next(80, 120);
+            double mod = modify / 100;
+            int playerStat =Convert.ToInt32( mod * Convert.ToInt32(Constants.Hero.atk * 0.1 + Constants.Hero.agi * 0.5 + Constants.Hero.luck * 0.25));
+            modify = r.Next(80, 120);
+            mod = modify / 100;
+            int enemyStat = Convert.ToInt32( mod * Convert.ToInt32(Constants.allEnemies[Constants.enemyNo].str * 0.1 + Constants.allEnemies[Constants.enemyNo].speed * 0.5 + Constants.allEnemies[Constants.enemyNo].luck * 0.25));
             if (who == 0) // 0 is a player
-                return playerStat > enemyStat;
+            {
+                baseHit += playerStat - enemyStat;
+                int hit = r.Next(1, 100);
+                return baseHit > hit;
+            }
             else
-                return enemyStat > playerStat;
+            {
+                baseHit += enemyStat - playerStat;
+                int hit = r.Next(1, 100);
+                return baseHit > hit;
+            }
+                
+        }
+        public void winBattle()
+        {
+            IsExit = true;
+            IsMenu = false;
+            loot();
+            RewardInfo = "Otrzymano " + Constants.allEnemies[Constants.enemyNo].exp + " doświadczenia oraz " + Constants.allEnemies[Constants.enemyNo].gold + " złota";
+            if (loots.Count > 0)
+            {
+                foreach(Item item in loots)
+                {
+                    if (Constants.Hero.inventory.items.Contains(item))
+                    {
+                        item.Quantity += 1;
+                    }
+                    else
+                    {
+                        Constants.Hero.inventory.items.Add(item);
+                        item.Quantity += 1;
+                    }
+                    RewardInfo += " Znalaziono " + item.name+"\n";
+                }
+            }
+            else
+            {
+                RewardInfo += " Nie zdobyto żadnych przedmiotów";
+            }
+        
+        }
+
+        public void loot()
+        {
+            Random r = new Random();
+            int chance = 0;
+            if (Constants.allEnemies[Constants.enemyNo].loot != null)
+            {
+                foreach(Item item in Constants.allEnemies[Constants.enemyNo].loot)
+                {
+                    chance = r.Next(0, 100);
+                    if (item.lootPercent > chance)
+                    {
+
+                    }
+                    else
+                    {
+                        loots.Add(item);
+                    }
+                }
+            }
+
+            
+        }
+
+        public async void exit()
+        {
+            var navigation = Application.Current.MainPage;
+          await  navigation.Navigation.PopAsync();
         }
 
         

@@ -47,6 +47,7 @@ namespace Szymon_RPG.Models
         public int price { get; set; }
         public int type { get; set; }
         private int quantity { get; set; } = 0;
+        public int lootPercent = 66; //34 na udany loot
 
 
         public bool isConsuamble { get; set; } = false;
