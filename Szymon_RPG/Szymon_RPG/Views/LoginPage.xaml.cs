@@ -83,6 +83,9 @@ namespace Szymon_RPG.Views
             items.Add(ring1);
             //Twohand!
 
+            //Skille
+            Constants.allSkills = new List<Skill>();
+            AttackSkill wolfBite = new AttackSkill() { name = "Ugryzienie", manaCost = 2,skillStr = 5 };
 
 
             Quest firstQuest = new Quest() {  exp = 30, done = 0, desc = "Tutaj znajduje się opis pierwszego questa", gold = 50, itemReward = null, name = "Pierwszy Quest", reqDone = 3, reward = "armor.png" };
@@ -91,10 +94,10 @@ namespace Szymon_RPG.Views
 
             //enemies
 
-
-            Enemy enemy = new Enemy() { name = "Osa", rarity = "Common", image="bee.png", def=3, exp= 10, gold = 10, hp=40, id=0, items=new List<Item>(),loot=new List<Item>(), mag=3, str=3, luck=3 , lvl=1, mp= 12, spr=3, speed= 2, maxHP=40,maxMP=12};
-           
-           
+            
+            Enemy enemy = new Enemy() { name = "Osa", rarity = "Common", image="bee.png", def=4, exp= 10, gold = 10, hp=40, id=0, items=new List<Item>(),loot=new List<Item>(), mag=3, str=8, luck=5 , lvl=1, mp= 12, spr=3, speed= 9, maxHP=40,maxMP=12};
+            Enemy wolf = new Enemy() { name = "Wilk", rarity = "Common", image = "wolf.png", def = 6, freqAi=69,isAi=true,exp = 12, gold = 9, hp = 60, id = 1, items = new List<Item>(), loot = new List<Item>(), mag = 1, str = 14, luck = 4, lvl = 1, mp = 16, spr=6,skills=new List<Skill>() , speed = 12, maxHP = 60, maxMP = 16 };
+            wolf.skills.Add(wolfBite);
            
        
             
@@ -116,6 +119,7 @@ namespace Szymon_RPG.Views
 
             Constants.allEnemies = new List<Enemy>();
             Constants.allEnemies.Add(enemy);
+            Constants.allEnemies.Add(wolf);
         }
 
 

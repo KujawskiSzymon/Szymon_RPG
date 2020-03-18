@@ -11,7 +11,8 @@ namespace Szymon_RPG.Models
            
             
         }
-
+        public bool isAi = false;
+        public List<Skill> skills;
         public int id; //[]in list??
         public string image;
         public string rarity;
@@ -30,6 +31,7 @@ namespace Szymon_RPG.Models
         public int spr;
         public int luck;
         public int speed;
+        public int freqAi = 100;
         public List<Item> items; //uses in fight
 
         public void addItems(List<Item> items)
@@ -49,7 +51,42 @@ namespace Szymon_RPG.Models
             }
         }
 
+        public bool willAI()
+        {
+            Random r = new Random();
+            int toUse = r.Next(0, 100);
+            return toUse > freqAi;
+        }
+
+        public bool hasMana(int manacost)
+        {
+            return manacost < mp;
+        }
        
+        public int useAi()
+        {
+            Random r = new Random();
+
+            int skillNo = r.Next(0, skills.Count - 1);
+                var x = skills[skillNo] as AttackSkill;
+                if (x != null && hasMana(x.manaCost))
+
+                    return x.useSkill(this.str,ref mp);
+                else
+                    return str;
+            
+           
+        }
+
+        public int getSkill()
+        {
+            Random r = new Random();
+
+            int skillNo = r.Next(0, skills.Count - 1);
+            return skillNo;
+        }
+
+        
         
     }
 }

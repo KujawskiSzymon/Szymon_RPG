@@ -10,6 +10,7 @@ namespace Szymon_RPG.ViewModels
 {
     public class FightViewModel : INotifyPropertyChanged
     {
+       public Button attackBut;
         public event PropertyChangedEventHandler PropertyChanged;
         public List<Item> loots;
 
@@ -27,6 +28,9 @@ namespace Szymon_RPG.ViewModels
             }
             );
             loots = new List<Item>();
+            attackBut = new Button();
+            attackBut.Command = attackButton;
+            IsMenu = true;
 
         }
 
@@ -45,6 +49,9 @@ namespace Szymon_RPG.ViewModels
         private int playermp = Constants.Hero.mp;
         private string rewardInfo = "";
         private bool isExit=false;
+        private int heightRequestAttack = 50;
+
+
 
         public Boolean IsExit
         {
@@ -59,7 +66,7 @@ namespace Szymon_RPG.ViewModels
             }
         }
 
-        public Boolean IsMenu
+        public bool IsMenu
         {
             get
             {
@@ -69,6 +76,7 @@ namespace Szymon_RPG.ViewModels
             {
                 isMenu = value;
                 OnPropertyChanged("IsMenu");
+                OnPropertyChanged("HeightRequestAttack");
             }
         }
 
@@ -208,6 +216,20 @@ namespace Szymon_RPG.ViewModels
             }
         }
 
+        public int HeightRequestAttack
+        {
+            get
+            {
+                return heightRequestAttack;
+            }
+            set
+            {
+                heightRequestAttack = value;
+                OnPropertyChanged("HeightRequestAttack");
+            }
+           
+        }
+
 
 
 
@@ -254,6 +276,7 @@ namespace Szymon_RPG.ViewModels
 
        public void playerAttack()
         {
+            HeightRequestAttack = 0;
             IsMenu = false;
             string msg;
             int damage = Constants.Hero.atk - Constants.allEnemies[Constants.enemyNo].def;
@@ -271,33 +294,107 @@ namespace Szymon_RPG.ViewModels
             else
                 msg = Constants.Hero.name + " nie trafia !\n";
             BattleLog += msg;
-            
+           
             checkBattleStatus();
             enemyAttack();
 
         }
         public void enemyAttack()
         {
-            string msg;
-            int damage = Constants.allEnemies[Constants.enemyNo].str - Constants.Hero.def;
-         
-            Random r = new Random();
-            int modify = r.Next(70, 130);
-            double mod = (double)modify / 100;
-            damage = Convert.ToInt32(damage * mod);
-            if (damage <= 0)
-                damage = 1;
-            if (isHit(1))
+            int damage; 
+            if (Constants.allEnemies[Constants.enemyNo].isAi == false)
             {
-                Playerhp -= damage;
+                string msg;
+                damage  = Constants.allEnemies[Constants.enemyNo].str - Constants.Hero.def;
+                Random r = new Random();
+                int modify = r.Next(70, 130);
+                double mod = (double)modify / 100;
+                damage = Convert.ToInt32(damage * mod);
+                if (damage <= 0)
+                    damage = 1;
+                if (isHit(1))
+                {
+                    Playerhp -= damage;
 
-                msg = Constants.allEnemies[Constants.enemyNo].name + " trafia i zadaje " + damage + " obrażeń\n";
+                    msg = Constants.allEnemies[Constants.enemyNo].name + " trafia i zadaje " + damage + " obrażeń\n";
+                }
+                else
+                    msg = Constants.allEnemies[Constants.enemyNo].name + " nie trafia !\n";
+                BattleLog += msg;
             }
             else
-                msg = Constants.allEnemies[Constants.enemyNo].name + " nie trafia !\n";
-            BattleLog += msg;
+            {
+                
+                string msg;
+                if (Constants.allEnemies[Constants.enemyNo].skills[Constants.allEnemies[Constants.enemyNo].getSkill()].manaCost > Mp )
+                {
+                   
+                    damage = Constants.allEnemies[Constants.enemyNo].str - Constants.Hero.def;
+                    Random r = new Random();
+                    int modify = r.Next(70, 130);
+                    double mod = (double)modify / 100;
+                    damage = Convert.ToInt32(damage * mod);
+                    if (damage <= 0)
+                        damage = 1;
+                    if (isHit(1))
+                    {
+                        Playerhp -= damage;
+
+                        msg = Constants.allEnemies[Constants.enemyNo].name + " trafia i zadaje " + damage + " obrażeń\n";
+                    }
+                    else
+                        msg = Constants.allEnemies[Constants.enemyNo].name + " nie trafia !\n";
+                    BattleLog += msg;
+                }
+                else if(Constants.allEnemies[Constants.enemyNo].willAI())
+                {
+                    damage = Constants.allEnemies[Constants.enemyNo].useAi() - Constants.Hero.def;
+                    Mp = Constants.allEnemies[Constants.enemyNo].mp;
+                    Random r = new Random();
+                    int modify = r.Next(70, 130);
+                    double mod = (double)modify / 100;
+                    damage = Convert.ToInt32(damage * mod);
+                    if (damage <= 0)
+                        damage = 1;
+                    if (isHit(1))
+                    {
+                        Playerhp -= damage;
+
+                        msg = Constants.allEnemies[Constants.enemyNo].name + " używa " + Constants.allEnemies[Constants.enemyNo].skills[0].name + "  zadaje " + damage + " obrażeń\n";
+                    }
+                    else
+                        msg = Constants.allEnemies[Constants.enemyNo].name + " używa " + Constants.allEnemies[Constants.enemyNo].skills[0].name + " nie trafia !\n";
+                    BattleLog += msg;
+                }
+                else
+                {
+                
+                    damage = Constants.allEnemies[Constants.enemyNo].str - Constants.Hero.def;
+                    Random r = new Random();
+                    int modify = r.Next(70, 130);
+                    double mod = (double)modify / 100;
+                    damage = Convert.ToInt32(damage * mod);
+                    if (damage <= 0)
+                        damage = 1;
+                    if (isHit(1))
+                    {
+                        Playerhp -= damage;
+
+                        msg = Constants.allEnemies[Constants.enemyNo].name + " trafia i zadaje " + damage + " obrażeń\n";
+                    }
+                    else
+                        msg = Constants.allEnemies[Constants.enemyNo].name + " nie trafia !\n";
+                    BattleLog += msg;
+                }
+               
+            }
+          
+           
+         
+          
             
             checkBattleStatus();
+            HeightRequestAttack = -1;
             IsMenu = true;
            
 
@@ -330,11 +427,13 @@ namespace Szymon_RPG.ViewModels
         }
         public void winBattle()
         {
+            attackBut.IsVisible = false;
             IsExit = true;
             IsMenu = false;
+            HeightRequestAttack = 1;
             loot();
             RewardInfo = "Otrzymano " + Constants.allEnemies[Constants.enemyNo].exp + " doświadczenia oraz " + Constants.allEnemies[Constants.enemyNo].gold + " złota";
-            if (loots.Count > 0)
+            if (loots?.Count > 0)
             {
                 foreach(Item item in loots)
                 {

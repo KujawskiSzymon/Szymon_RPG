@@ -272,6 +272,7 @@ namespace Szymon_RPG.ViewModels
                 case 0:
             
                     Enemy enemy = Constants.allEnemies[0];
+                    Constants.enemyNo = enemy.id;
                     InfoText = "Zaatakaowała Cię Osa!\n"+"Poziom: "+enemy.lvl+"\n";
                     EnemyImg = enemy.image;
                     IsImageEnemy = true;
@@ -287,13 +288,18 @@ namespace Szymon_RPG.ViewModels
             switch (Constants.actualTown)
             {
                 case 0:
-                    InfoText = "Łatwy przeciwnik 2";
+                    Enemy enemy = Constants.allEnemies[1];
+                    Constants.enemyNo = enemy.id;
+                    InfoText = "Zaatakował Cię "+enemy.name+"\n"+"Poziom: "+enemy.lvl+"\n";
+                    EnemyImg = enemy.image;
                     IsImageEnemy = true;
-                    EnemyImg = "spooky.png";
+               
+                    IsFightable = true;
                     RewardColor = "Blue";
                     RewardText = "";
-                    
                     break;
+
+                   
             }
             
         }

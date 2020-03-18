@@ -11,9 +11,10 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Image HeightRequest="100" Source="forest_back.jpg"/>
+           
+                <Image HeightRequest="100" Source="forest_back.jpg"/>
 
-
+        
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
@@ -39,34 +40,32 @@
                     
                 </Grid.ColumnDefinitions>
 
-                <Label Text="{Binding Playerhp, Mode=TwoWay}" Grid.Column="0"/>
-                <Label Text="{Binding PlayermaxHp,Mode=TwoWay}" Grid.Column="1"/>
-                <Label Text="{Binding Playermp,Mode=TwoWay}" Grid.Column="2"/>
-                <Label Text="{Binding PlayermaxMp,Mode=TwoWay}" Grid.Column="3"/>
-                <Label Text="{Binding Hp,Mode=TwoWay}" Grid.Column="4"/>
-                <Label Text="{Binding MaxHp,Mode=TwoWay}" Grid.Column="5"/>
-                <Label Text="{Binding Mp,Mode=TwoWay}" Grid.Column="6"/>
-                <Label Text="{Binding MaxMp,Mode=TwoWay}" Grid.Column="7"/>
+                <Label TextColor="Red" Text="{Binding Playerhp, Mode=TwoWay}" Grid.Column="0"/>
+                <Label TextColor="Red" Text="{Binding PlayermaxHp,Mode=TwoWay}" Grid.Column="1"/>
+                <Label TextColor="Blue" Text="{Binding Playermp,Mode=TwoWay}" Grid.Column="2"/>
+                <Label TextColor="Blue" Text="{Binding PlayermaxMp,Mode=TwoWay}" Grid.Column="3"/>
+                <Label TextColor="Red" Text="{Binding Hp,Mode=TwoWay}" Grid.Column="4"/>
+                <Label TextColor="Red" Text="{Binding MaxHp,Mode=TwoWay}" Grid.Column="5"/>
+                <Label  TextColor="Blue" Text="{Binding Mp,Mode=TwoWay}" Grid.Column="6"/>
+                <Label TextColor="Blue" Text="{Binding MaxMp,Mode=TwoWay}" Grid.Column="7"/>
             </Grid>
             <Label Text="{Binding RewardInfo}"/>
             <Button Text="Powrót" Command="{Binding exitButton}" IsVisible="{Binding IsExit}"/>
 
 
-            <Grid IsVisible="{Binding IsMenu}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                </Grid.RowDefinitions>
-                <Button Command="{Binding attackButton}" Text="Atakuj" Grid.Row="0"/>
-                <Button Text="Magia" Grid.Row="1"/>
-                <Button Text="Przedmioty" Grid.Row="2"/>
-            </Grid>
-            <ScrollView HorizontalOptions="EndAndExpand">
+            <StackLayout   IsVisible="{Binding IsMenu,Mode=TwoWay}">
+
+                <Button  Command="{Binding attackButton}"   WidthRequest="125" HeightRequest="{Binding HeightRequestAttack}" VerticalOptions="Center" HorizontalOptions="Start"  Text="Atakuj" Grid.Row="0"/>
+                <Button WidthRequest="125" VerticalOptions="Center" HorizontalOptions="Start"  IsVisible="{Binding IsMenu,Mode=TwoWay}" Text="Magia" Grid.Row="1"/>
+                <Button WidthRequest="125" VerticalOptions="Center" HorizontalOptions="Start"  IsVisible="{Binding IsMenu,Mode=TwoWay}" Text="Przedmioty" Grid.Row="2"/>
+            </StackLayout>
+            <Label HorizontalOptions="Center" Text="Przebieg Walki" FontSize="Medium" FontAttributes="Italic" LineBreakMode="HeadTruncation" TextDecorations="Underline" VerticalOptions="Center"/>
+            <ScrollView VerticalScrollBarVisibility="Default"  HorizontalOptions="Center">
                 <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding BattleLog}"/>
             </ScrollView>
-           
 
+           
         </StackLayout>
+            
     </ContentPage.Content>
 </ContentPage>

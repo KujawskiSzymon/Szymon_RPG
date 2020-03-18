@@ -42,6 +42,11 @@ namespace Szymon_RPG.Models
         //Questy
 
 
+        //Skille
+
+        public static List<Skill> allSkills;
+
+
         //Enemies
 
         public static int enemyNo = 0;
